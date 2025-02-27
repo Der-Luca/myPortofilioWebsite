@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Firebase-Ordner ignorieren
+.firebase/
+.firebaserc
+firebase.json
+
+# Next.js Build-Ordner ignorieren
+.next/
+out/

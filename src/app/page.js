@@ -14,7 +14,7 @@ export default function Home() {
       <section className="text-center mt-20">
         <h1 className="text-5xl font-bold mb-4">Hey, ich bin Luca! 👋</h1>
         <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-          Willkommen auf meiner Portfolio-Seite! Ich bin **Full-Stack-Entwickler & Systemintegrator** mit Erfahrung in **Webentwicklung, Netzwerktechnik und IT-Infrastruktur**. Ich entwickle **moderne Webanwendungen mit Next.js, Tailwind CSS & Node.js** und kümmere mich um **sichere & effiziente IT-Lösungen**. 🚀
+          Willkommen auf meiner Portfolio-Seite! Ich bin Full-Stack-Entwickler & Systemintegrator mit Erfahrung in Webentwicklung, Netzwerktechnik und IT-Infrastruktur. Ich entwickle moderne Webanwendungen mit Next.js, Tailwind CSS & Node.js und kümmere mich um sichere & effiziente IT-Lösungen. 🚀
         </p>
         <div className="mt-6 flex gap-4 justify-center">
           <a 

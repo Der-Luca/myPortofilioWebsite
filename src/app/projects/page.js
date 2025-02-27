@@ -77,7 +77,7 @@ export default function Projects() {
       </div>
       
       <div className="flex justify-center">
-        <a href="contact" className="bg-blue-500 px-5 py-3 mb-4 rounded-lg text-white font-semibold hover:bg-blue-600 transition">
+        <a href="/contact" className="bg-blue-500 px-5 py-3 mb-4 rounded-lg text-white font-semibold hover:bg-blue-600 transition">
           Jetzt kontaktieren
         </a>
       </div>

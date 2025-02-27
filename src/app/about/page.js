@@ -45,8 +45,8 @@ export default function About() {
         <div className="my-10">
           <h3 className="text-3xl font-bold mb-4">Interessiert? Erfahre mehr über meine Projekte oder kontaktiere mich! 🔍</h3>
           <div className="flex flex-row">
-            <div><a href="projects" className="bg-blue-500 px-5 py-3 rounded-lg text-white font-semibold hover:bg-blue-600 transition">Meine Projekte</a></div>
-            <div className="mx-4"><a href="contact" className="bg-gray-500 px-5 py-3 rounded-lg text-white font-semibold hover:bg-gray-600 transition">Kontaktiere mich</a></div>
+            <div><a href="/projects" className="bg-blue-500 px-5 py-3 rounded-lg text-white font-semibold hover:bg-blue-600 transition">Meine Projekte</a></div>
+            <div className="mx-4"><a href="/contact" className="bg-gray-500 px-5 py-3 rounded-lg text-white font-semibold hover:bg-gray-600 transition">Kontaktiere mich</a></div>
           </div>
         </div>
       </section>
