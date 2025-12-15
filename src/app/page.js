@@ -1,46 +1,32 @@
 'use client';
-import { motion } from "framer-motion";
-import Navbar from "./components/navbar";
+import { motion } from 'framer-motion';
+import Navbar from './components/navbar';
+import Hero from './components/home/Hero';
+import ValueProps from './components/home/ValueProps';
+import Services from './components/home/Services';
+import Process from './components/home/Process';
+import Tech from './components/home/Tech';
+import MiniCase from './components/home/MiniCase';
+import CTA from './components/home/CTA';
+import Pricing from './components/home/Pricing';
 
 export default function Home() {
   return (
-    <motion.main 
-      className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-6"
-      initial={{ opacity: 0, y: 50 }}
+    <motion.main
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen  text-gray-100"
     >
       <Navbar />
-      <section className="text-center mt-20">
-        <h1 className="text-5xl font-bold mb-4">Hey, ich bin Luca! 👋</h1>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-          Willkommen auf meiner Portfolio-Seite! Ich bin Full-Stack-Entwickler & Systemintegrator mit Erfahrung in Webentwicklung, Netzwerktechnik und IT-Infrastruktur. Ich entwickle moderne Webanwendungen mit Next.js, Tailwind CSS & Node.js und kümmere mich um sichere & effiziente IT-Lösungen. 🚀
-        </p>
-        <div className="mt-6 flex gap-4 justify-center">
-          <a 
-            href="/about" 
-            className="bg-blue-500 px-5 py-3 rounded-lg text-white font-semibold hover:bg-blue-600 transition"
-          >
-            Mehr über mich
-          </a>
-          <a 
-            href="projects" 
-            className="bg-gray-700 px-5 py-3 rounded-lg text-white font-semibold hover:bg-gray-600 transition"
-          >
-            Projekte ansehen
-          </a>
-        </div>
-      </section>
-      
-      <section className="mt-16 text-center">
-        <h2 className="text-3xl font-bold mb-3">Folge mir</h2>
-        <div className="flex gap-4 justify-center">
-          <a 
-            href="https://de.linkedin.com/in/luca-samuel-ple%C3%9Fing-233336274?original_referer=https%3A%2F%2Fwww.google.com%2F" 
-            className="text-purple-400 hover:text-purple-500 transition"
-          >LinkedIn</a>
-        </div>
-      </section>
+      <Hero />
+      <ValueProps />
+      <Services />
+      <Process />
+      <Pricing/>
+      <Tech />
+      <MiniCase />
+      <CTA />
     </motion.main>
   );
 }
