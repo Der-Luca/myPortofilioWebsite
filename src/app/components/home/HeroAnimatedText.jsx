@@ -1,37 +1,40 @@
-'use client';
+"use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function HeroAnimatedText() {
-
-  const rotatingWords = [
+  const words = [
     "Consulting",
-    "Künstliche Intelligenz",
+    "KI",
     "Automatisierung",
-    "Development"
+    "Cloud Native",
+    "Transformation"
   ];
 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(i => (i + 1) % rotatingWords.length);
-    }, 2500);
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2500); // 2.5 Sekunden, damit man es auch lesen und genießen kann
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative h-16 md:h-20 flex items-center justify-center mt-2 overflow-hidden">
-      <motion.h2
-        key={index}
-        initial={{ opacity: 0, y: 25 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="absolute text-3xl md:text-5xl font-extrabold text-blue-400"
-      >
-        {rotatingWords[index]}
-      </motion.h2>
+    <div className="relative h-20 md:h-32 flex items-center justify-center overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.h2
+          key={words[index]}
+          initial={{ y: 40, opacity: 0, filter: "blur(10px)" }}
+          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+          exit={{ y: -40, opacity: 0, filter: "blur(10px)" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="absolute text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 drop-shadow-2xl"
+        >
+          {words[index]}
+        </motion.h2>
+      </AnimatePresence>
     </div>
   );
 }

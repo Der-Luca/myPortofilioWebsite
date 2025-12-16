@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/navbar';
 import Hero from '../components/services/Hero';
 
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+import { useRef } from "react";
+
 export default function Home() {
   return (
     <motion.main

@@ -47,16 +47,17 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <header
-      className={[
-        'sticky top-0 z-50',
-        'backdrop-blur-xl supports-[backdrop-filter]:bg-slate-900/10',
-        'transition-all duration-300',
-        scrolled
-          ? 'bg-slate-900/40 border-b border-white/10 shadow-[0_18px_45px_rgba(0,0,0,0.45)]'
-          : 'bg-slate-900/10 border-b border-white/5 shadow-none',
-      ].join(' ')}
-    >
+  <header
+  className={[
+    'fixed top-0 left-0 right-0 z-50',
+    'backdrop-blur-xl supports-[backdrop-filter]:bg-slate-900/10',
+    'transition-all duration-300',
+    scrolled
+      ? 'bg-slate-900/40 border-b border-white/10 shadow-[0_18px_45px_rgba(0,0,0,0.45)]'
+      : 'bg-slate-900/10 border-b border-white/5 shadow-none',
+  ].join(' ')}
+>
+
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Bereich mit LOGO */}
         <Link href="/" className="flex items-center gap-3 group focus:outline-none">

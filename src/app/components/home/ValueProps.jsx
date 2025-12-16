@@ -1,59 +1,123 @@
-import { Lightbulb, Gauge, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { Lightbulb, Gauge, ShieldCheck, Headphones } from "lucide-react";
 
-export default function ValueProps() {
-  const items = [
-    {
-      icon: <Gauge className="w-8 h-8 text-blue-300" />,
-      title: "Schnelle Umsetzung",
-      text: "Kickoff ➜ Prototyp ➜ Live in wenigen Wochen.",
-    },
-    {
-      icon: <Lightbulb className="w-8 h-8 text-blue-300" />,
-      title: "Messbare Effekte",
-      text: "Zeitersparnis, weniger Fehler, klare KPI-Ziele.",
-    },
-    {
-      icon: <ShieldCheck className="w-8 h-8 text-blue-300" />,
-      title: "Eigene Infrastruktur",
-      text: "DSGVO-sicher: Docker, Postgres, Nginx, Self-Hosting möglich.",
-    },
-  ];
+const items = [
+  {
+    icon: <Gauge className="w-8 h-8 text-sky-400" />,
+    title: "Schnelle Umsetzung",
+    text: "Kickoff → Prototyp → Live in wenigen Wochen.",
+  },
+  {
+    icon: <Lightbulb className="w-8 h-8 text-sky-400" />,
+    title: "Messbare Effekte",
+    text: "Zeitersparnis, weniger Fehler, klare KPI-Ziele.",
+  },
+  {
+    icon: <ShieldCheck className="w-8 h-8 text-sky-400" />,
+    title: "Eigene Infrastruktur",
+    text: "Self-Hosting, Docker, Postgres, Nginx, DSGVO-sicher.",
+  },
+  {
+    icon: <Headphones className="w-8 h-8 text-sky-400" />,
+    title: "Professionelle Betreuung",
+    text: "Klare Kommunikation, Wartbarkeit & langfristige Weiterentwicklung.",
+  },
+];
 
+// Animation für den Container (steuert das "Nacheinander")
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Verzögerung zwischen den einzelnen Karten
+    },
+  },
+};
+
+// Animation für die einzelne Karte (von rechts nach links)
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    x: 100, // Startet 100px weiter rechts
+    scale: 0.9 
+  },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    scale: 1,
+    transition: { 
+      type: "spring", // Federt leicht
+      stiffness: 100,
+      damping: 10
+    } 
+  },
+};
+
+export default function ValuePropsMotion() {
   return (
-    <section className="relative px-6 py-20 max-w-6xl mx-auto">
+    <section className="relative w-full min-h-screen px-6 py-24 flex flex-col items-center justify-center bg-slate-950 overflow-hidden">
+      
+      {/* Hintergrund Glow (optional für Ambiente) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Subtiles Grid im Hintergrund */}
-      <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      {/* TITEL */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 text-center mb-16 max-w-2xl"
+      >
+        <h2 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-200 to-sky-400 drop-shadow-lg">
+          Warum Plessing Consulting?
+        </h2>
+        <p className="mt-4 text-slate-400 text-lg">
+          Ergebnisse, die zählen. Keine leeren Versprechungen.
+        </p>
+      </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8 relative z-10">
-        {items.map((i) => (
-          <div
-            key={i.title}
+      {/* GRID CONTAINER */}
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }} // Startet, wenn 20% sichtbar sind
+      >
+        {items.map((item, idx) => (
+          <motion.div
+            key={idx}
+            variants={cardVariants}
+            whileHover={{ 
+              scale: 1.05, 
+              y: -5,
+              boxShadow: "0px 10px 30px rgba(56, 189, 248, 0.2)", // Sky-blue Glow
+              borderColor: "rgba(56, 189, 248, 0.5)"
+            }}
             className="
-              group relative rounded-2xl border border-white/10 p-8 
-              bg-gray-900/40 backdrop-blur-sm 
-              transition-all duration-300
-              hover:border-blue-400/40 hover:shadow-[0_0_30px_rgba(100,150,255,0.15)]
-              hover:scale-[1.02]
+              flex flex-col items-start
+              rounded-3xl p-8
+              bg-white/5 backdrop-blur-md 
+              border border-white/10
+              transition-colors duration-300
+              group cursor-default
             "
           >
-            {/* Glow highlight */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-10 transition duration-300"></div>
-
-            {/* ICON */}
-            <div className="mb-5">{i.icon}</div>
-
-            {/* TITLE */}
-            <h3 className="text-xl font-semibold mb-2 text-white">
-              {i.title}
+            <div className="p-3 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-sky-500/20 group-hover:border-sky-500/30 transition-colors duration-300">
+              {item.icon}
+            </div>
+            
+            <h3 className="mt-6 text-xl font-bold text-white group-hover:text-sky-300 transition-colors">
+              {item.title}
             </h3>
-
-            {/* TEXT */}
-            <p className="text-gray-300">{i.text}</p>
-          </div>
+            
+            <p className="mt-3 text-slate-400 leading-relaxed group-hover:text-slate-200 transition-colors">
+              {item.text}
+            </p>
+          </motion.div>
         ))}
-      </div>
-
+      </motion.div>
     </section>
   );
 }

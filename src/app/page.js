@@ -5,10 +5,11 @@ import Hero from './components/home/Hero';
 import ValueProps from './components/home/ValueProps';
 import Services from './components/home/Services';
 import Process from './components/home/Process';
-import Tech from './components/home/Tech';
-import MiniCase from './components/home/MiniCase';
-import CTA from './components/home/CTA';
 import Pricing from './components/home/Pricing';
+import ConsultingCTA from './components/home/ConsultingCTA';
+import Footers from './components/home/Footer';
+import SelectedWork from './components/home/SelectedWork';
+import Testimonials from './components/home/Testimonials';
 
 export default function Home() {
   return (
@@ -21,12 +22,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ValueProps />
+      <ConsultingCTA/>
       <Services />
       <Process />
+     <SelectedWork/>
+      <Testimonials />
       <Pricing/>
-      <Tech />
-      <MiniCase />
-      <CTA />
+      <Footers/>
     </motion.main>
   );
 }
