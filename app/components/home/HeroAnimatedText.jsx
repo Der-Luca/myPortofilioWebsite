@@ -30,7 +30,8 @@ export default function HeroAnimatedText() {
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           exit={{ y: -40, opacity: 0, filter: "blur(10px)" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="absolute text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 drop-shadow-2xl"
+className="absolute text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 drop-shadow-2xl"
+
         >
           {words[index]}
         </motion.h2>
