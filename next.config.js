@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export", // Aktiviert den statischen Export
-    trailingSlash: true, // Sorgt für saubere URLs
+    // output: "export",  <-- LÖSCHEN oder auskommentieren!
+    trailingSlash: true, 
     images: {
-      unoptimized: true, // Deaktiviert Next.js Image-Optimierung für Firebase
+      unoptimized: true, 
     },
   };
   
-  module.exports = nextConfig;
-  
+module.exports = nextConfig;
