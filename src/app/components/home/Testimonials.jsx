@@ -4,15 +4,15 @@ import { Quote, Star, User } from "lucide-react";
 
 export default function Testimonials() {
   const reviews = [
-    {
-      company: "Immobot",
-      person: "Christoph D.",
-      role: "Founder & CEO",
-      text: "Unsere Anfragen über 40 Portale zu managen war Hölle. Plessing Consulting hat eine Automatisierung gebaut, die uns wöchentlich 20+ Stunden spart. Das System läuft stabiler als alles, was wir davor hatten.",
-      highlight: "Automatisierung & Skalierung",
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10",
-    },
+  {
+  company: "Immobot",
+  person: "Christoph D.",
+  role: "Founder & CEO",
+  text: "Wir haben unsere Immobiliensuche stark automatisiert und mehrere Plattformen angebunden. Plessing Consulting hat uns dabei konzeptionell und technisch sauber unterstützt – von der Datenlogik bis zur stabilen Umsetzung. Das System läuft zuverlässig und lässt sich flexibel weiter ausbauen.",
+  highlight: "Automatisierung & Systemarchitektur",
+  color: "text-emerald-400",
+  bg: "bg-emerald-500/10",
+},
     {
       company: "Peaches",
       person: "Fabian N.",

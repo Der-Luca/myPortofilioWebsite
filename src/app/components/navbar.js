@@ -8,9 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projekte' },
-  { href: '/about', label: 'Über mich' },
+  { href: '/#selected-work', label: 'Projekte' },
+  { href: '/about', label: 'About' },
 ];
 
 function NavLink({ href, label, active }) {

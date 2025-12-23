@@ -4,32 +4,38 @@ import { Bot, Workflow, Code2, RefreshCw } from "lucide-react";
 import WaveMesh from "./WaveMesh"; 
 
 export default function Services() {
-  const services = [
-    {
-      icon: <Workflow className="w-10 h-10 text-emerald-400" />,
-      title: "Prozess-Automatisierung",
-      desc: "Schluss mit Excel-Chaos und manuellem Daten-Schaufeln. Wir verbinden Ihre Systeme (ERP, Shop, Mail), damit Daten automatisch fließen.",
-      bullets: ["Rechnungsstellung automatisieren", "Daten-Synchronisation", "Fehleranfällige Handarbeit eliminieren"],
-    },
-    {
-      icon: <Bot className="w-10 h-10 text-purple-400" />,
-      title: "KI & AI-Lösungen",
-      desc: "Nutzen Sie künstliche Intelligenz nicht nur zum Spielen. Wir integrieren KI, die Ihre Dokumente analysiert, Support-Tickets vorfiltert oder Inhalte generiert.",
-      bullets: ["Eigene ChatGPT-Lösungen (RAG)", "Dokumenten-Analyse", "Intelligente Chatbots"],
-    },
-    {
-      icon: <Code2 className="w-10 h-10 text-sky-400" />,
-      title: "Individuelle Software / CRMs",
-      desc: "Standard-Software passt nicht? Wir bauen maßgeschneiderte Dashboards, Portale und CRMs, die exakt Ihren Workflow abbilden.",
-      bullets: ["Interne Mitarbeiter-Tools", "Kundenportale", "Maßgeschneiderte CRMs"],
-    },
-    {
-      icon: <RefreshCw className="w-10 h-10 text-orange-400" />,
-      title: "Legacy Modernisierung",
-      desc: "Sie haben alte Software, die langsam und unsicher ist? Wir 'refactorn' den Code, machen ihn schnell, sicher und wartbar für die Zukunft.",
-      bullets: ["Performance-Optimierung", "Sicherheits-Updates", "Umzug in die Cloud"],
-    },
-  ];
+ const services = [
+  {
+    icon: <Workflow className="w-10 h-10 text-emerald-400" />,
+    title: "Prozess-Automatisierung",
+    desc: "Schluss mit Excel-Chaos und manuellem Daten-Schaufeln. Wir verbinden Ihre Systeme (ERP, Shop, Mail), damit Daten automatisch fließen.",
+    bullets: ["Rechnungsstellung automatisieren", "Daten-Synchronisation", "Fehleranfällige Handarbeit eliminieren"],
+  },
+  {
+    icon: <Bot className="w-10 h-10 text-purple-400" />,
+    title: "KI & AI-Lösungen",
+    desc: "Nutzen Sie künstliche Intelligenz nicht nur zum Spielen. Wir integrieren KI, die Dokumente versteht, Support-Anfragen smarter sortiert und Teams spürbar entlastet.",
+    bullets: [
+      "Eigene ChatGPT-Lösungen (RAG)",
+      "Dokumenten-Analyse",
+      "Intelligente Ticket-Systeme (Klassifizierung, Routing, Entwürfe)",
+      "Intelligente Chatbots",
+    ],
+  },
+  {
+    icon: <Code2 className="w-10 h-10 text-sky-400" />,
+    title: "Individuelle Software / CRMs",
+    desc: "Standard-Software passt nicht? Wir bauen maßgeschneiderte Dashboards, Portale und CRMs, die exakt Ihren Workflow abbilden.",
+    bullets: ["Interne Mitarbeiter-Tools", "Kundenportale", "Maßgeschneiderte CRMs"],
+  },
+  {
+    icon: <RefreshCw className="w-10 h-10 text-orange-400" />,
+    title: "Legacy Modernisierung",
+    desc: "Sie haben alte Software, die langsam und unsicher ist? Wir modernisieren bestehende Systeme, machen sie schneller, sicherer und wartbar für die Zukunft.",
+    bullets: ["Performance-Optimierung", "Sicherheits-Updates", "Modernisierung & Migration"],
+  },
+];
+
 
   // Animation Config
   const container = {

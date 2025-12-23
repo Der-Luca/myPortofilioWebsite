@@ -3,12 +3,29 @@ import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react"; // Für die Pfeile zwischen den Schritten
 
 export default function Process() {
-  const steps = [
-    { k: '01', t: 'Kickoff', d: 'Ziele definieren, Systeme prüfen, KPIs & Datenschutz klären. Roadmap festzurren.' },
-    { k: '02', t: 'Prototyp', d: 'Entwicklung eines schnellen Proof of Value mit echten Daten als Entscheidungsgrundlage.' },
-    { k: '03', t: 'Implementierung', d: 'Überführung in das Live-System: Stabil, dokumentiert und mit Monitoring.' },
-    { k: '04', t: 'Betrieb & Skalierung', d: 'Kontinuierlicher Support, Wartung oder nahtlose Übergabe an Ihr Team.' },
-  ];
+const steps = [
+  {
+    k: '01',
+    t: 'Kickoff & Analyse',
+    d: 'Ziele klären, bestehende Abläufe verstehen, Rahmenbedingungen und Datenschutz prüfen. Gemeinsame Roadmap festlegen.',
+  },
+  {
+    k: '02',
+    t: 'Konzept & Lösungsdesign',
+    d: 'Ausarbeitung einer konkreten Lösung mit klarer Struktur und realistischen Annahmen als Entscheidungsgrundlage.',
+  },
+  {
+    k: '03',
+    t: 'Umsetzung',
+    d: 'Schrittweise Realisierung der Lösung – stabil, nachvollziehbar und sauber dokumentiert.',
+  },
+  {
+    k: '04',
+    t: 'Betrieb & Weiterentwicklung',
+    d: 'Begleiteter Betrieb, Optimierungen oder strukturierte Übergabe an interne Teams.',
+  },
+];
+
 
   const [active, setActive] = useState(0);
 

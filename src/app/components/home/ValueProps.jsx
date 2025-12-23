@@ -4,25 +4,26 @@ import { Lightbulb, Gauge, ShieldCheck, Headphones } from "lucide-react";
 const items = [
   {
     icon: <Gauge className="w-8 h-8 text-sky-400" />,
-    title: "Schnelle Umsetzung",
-    text: "Kickoff → Prototyp → Live in wenigen Wochen.",
+    title: "Schnelle Ergebnisse",
+    text: "Klare Schritte von der Idee bis zur fertigen Lösung – ohne unnötige Umwege.",
   },
   {
     icon: <Lightbulb className="w-8 h-8 text-sky-400" />,
-    title: "Messbare Effekte",
-    text: "Zeitersparnis, weniger Fehler, klare KPI-Ziele.",
+    title: "Spürbarer Mehrwert",
+    text: "Weniger manuelle Arbeit, bessere Abläufe und messbare Verbesserungen im Alltag.",
   },
   {
     icon: <ShieldCheck className="w-8 h-8 text-sky-400" />,
-    title: "Eigene Infrastruktur",
-    text: "Self-Hosting, Docker, Postgres, Nginx, DSGVO-sicher.",
+    title: "Zuverlässig & datensicher",
+    text: "Stabile Systeme, volle Kontrolle über Daten und saubere Umsetzung nach EU-Standards.",
   },
   {
     icon: <Headphones className="w-8 h-8 text-sky-400" />,
-    title: "Professionelle Betreuung",
-    text: "Klare Kommunikation, Wartbarkeit & langfristige Weiterentwicklung.",
+    title: "Persönliche Betreuung",
+    text: "Direkter Ansprechpartner, verständliche Kommunikation und langfristige Begleitung.",
   },
 ];
+
 
 // Animation für den Container (steuert das "Nacheinander")
 const containerVariants = {

@@ -1,45 +1,56 @@
 'use client';
 
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function MeshOverlay() {
-  const POINTS = 18;               // Anzahl der Punkte
-  const SPREAD = 1000;             // Breite
-  const HEIGHT = 600;              // Höhe
-  const SPEED = 0.5;               // Bewegungsgeschwindigkeit
+  const POINTS = 18;
+  const SPREAD = 1000;
+  const HEIGHT = 600;
+  const SPEED = 0.5;
 
-  const [nodes, setNodes] = useState(
-    Array.from({ length: POINTS }).map(() => ({
+  // ⛔️ Wichtig: initial LEER
+  const [nodes, setNodes] = useState([]);
+
+  // ✅ Erst NACH Mount Zufallswerte erzeugen
+  useEffect(() => {
+    const initialNodes = Array.from({ length: POINTS }).map(() => ({
       x: Math.random() * SPREAD,
       y: Math.random() * HEIGHT,
       vx: (Math.random() - 0.5) * SPEED,
       vy: (Math.random() - 0.5) * SPEED,
-    }))
-  );
+    }));
 
+    setNodes(initialNodes);
+  }, []);
+
+  // Animation
   useEffect(() => {
+    if (!nodes.length) return;
+
     let frame;
     const animate = () => {
       setNodes((prev) =>
         prev.map((p) => {
           let x = p.x + p.vx;
           let y = p.y + p.vy;
+          let vx = p.vx;
+          let vy = p.vy;
 
-          if (x < 0 || x > SPREAD) p.vx *= -1;
-          if (y < 0 || y > HEIGHT) p.vy *= -1;
+          if (x < 0 || x > SPREAD) vx *= -1;
+          if (y < 0 || y > HEIGHT) vy *= -1;
 
-          return { ...p, x, y };
+          return { ...p, x, y, vx, vy };
         })
       );
 
       frame = requestAnimationFrame(animate);
     };
+
     animate();
     return () => cancelAnimationFrame(frame);
-  }, []);
+  }, [nodes.length]);
 
-  // Linien zwischen nahen Punkten erzeugen
+  // Linien berechnen
   const edges = [];
   nodes.forEach((a, i) => {
     nodes.forEach((b, j) => {
@@ -51,6 +62,9 @@ export default function MeshOverlay() {
       }
     });
   });
+
+  // ⛔️ Solange noch keine Nodes → gar nichts rendern
+  if (!nodes.length) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none z-[6] opacity-40">
@@ -73,7 +87,7 @@ export default function MeshOverlay() {
           />
         ))}
 
-        {/* bewegte Punkte */}
+        {/* Punkte */}
         {nodes.map((p, i) => (
           <circle
             key={i}

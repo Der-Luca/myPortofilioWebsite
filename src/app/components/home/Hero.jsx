@@ -78,7 +78,7 @@ export default function Hero() {
             </a>
             
             <a
-              href="/projects"
+              href="/#selected-work"
               className="group inline-flex h-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-8 font-medium text-slate-200 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:text-white"
             >
               <span className="text-lg font-bold">Referenzen ansehen</span>

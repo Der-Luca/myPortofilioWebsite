@@ -31,7 +31,7 @@ export default function SelectedWork() {
   ];
 
   return (
-    <section className="relative w-full py-32 px-6 bg-slate-950 overflow-hidden">
+    <section className="relative w-full py-32 px-6 bg-slate-950 overflow-hidden" id="selected-work">
       
       {/* HINTERGRUND EFFEKTE */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

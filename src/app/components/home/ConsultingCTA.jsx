@@ -65,7 +65,7 @@ export default function MobileAppCTA() {
               </Link>
               
               <Link
-                href="/portfolio"
+                href="/#selected-work"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-200 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all backdrop-blur-sm"
               >
                 Referenzen
@@ -83,7 +83,6 @@ export default function MobileAppCTA() {
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
             animate={{ y: [0, -15, 0] }} // Schwebende Animation
             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
             className="relative"
@@ -106,7 +105,7 @@ export default function MobileAppCTA() {
                 <div className="flex justify-between items-center mb-6">
                   <div>
                     <h4 className="text-white font-bold text-lg">Dashboard</h4>
-                    <p className="text-slate-400 text-xs">Welcome back, Alex</p>
+                    <p className="text-slate-400 text-xs">Wilkommen, Alex</p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs text-white font-bold">
                     A
@@ -116,7 +115,7 @@ export default function MobileAppCTA() {
                 {/* Karte 1: Revenue Chart */}
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-4 mb-4">
                   <div className="flex justify-between items-end mb-2">
-                    <span className="text-slate-400 text-xs">Total Sales</span>
+                    <span className="text-slate-400 text-xs">Deine top Sales</span>
                     <span className="text-emerald-400 text-xs font-bold">+24%</span>
                   </div>
                   <div className="text-2xl font-bold text-white mb-3">€ 12,450</div>
@@ -142,21 +141,21 @@ export default function MobileAppCTA() {
                      <BarChart3 className="w-6 h-6 opacity-80" />
                      <div>
                        <div className="text-2xl font-bold">850</div>
-                       <div className="text-xs opacity-70">Active Users</div>
+                       <div className="text-xs opacity-70">Aktive Nutzer</div>
                      </div>
                   </div>
                   <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-4 text-white flex flex-col justify-between h-28">
                      <MessageSquare className="w-6 h-6 text-sky-400" />
                      <div>
                        <div className="text-2xl font-bold">12</div>
-                       <div className="text-xs text-slate-400">New Tickets</div>
+                       <div className="text-xs text-slate-400">Neue Tickets</div>
                      </div>
                   </div>
                 </div>
 
                 {/* Karte 3: Recent Activity (Liste) */}
                 <div className="flex-1 overflow-hidden">
-                  <h5 className="text-slate-400 text-xs font-bold uppercase mb-3 tracking-wider">Recent</h5>
+                  <h5 className="text-slate-400 text-xs font-bold uppercase mb-3 tracking-wider">Neu</h5>
                   <div className="space-y-3">
                     {[1, 2, 3].map((item) => (
                       <div key={item} className="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5">
@@ -165,7 +164,7 @@ export default function MobileAppCTA() {
                         </div>
                         <div>
                           <div className="text-sm text-white font-medium">System Update</div>
-                          <div className="text-xs text-slate-500">Just now</div>
+                          <div className="text-xs text-slate-500">Gerade eben</div>
                         </div>
                       </div>
                     ))}
@@ -180,20 +179,21 @@ export default function MobileAppCTA() {
               </div>
             </div>
             
-            {/* FLOATING BADGE NEBEN DEM HANDY */}
-            <motion.div 
-               animate={{ y: [0, 10, 0] }}
-               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
-               className="absolute -right-8 bottom-32 bg-white rounded-xl p-4 shadow-xl z-30 max-w-[140px] hidden md:block"
-            >
-               <div className="flex items-center gap-2 mb-1">
-                 <div className="w-2 h-2 rounded-full bg-green-500" />
-                 <span className="text-xs font-bold text-slate-800">Live Status</span>
-               </div>
-               <div className="text-sm text-slate-600 leading-tight">
-                 System läuft stabil.
-               </div>
-            </motion.div>
+          {/* FLOATING BADGE NEBEN DEM HANDY */}
+<motion.div 
+  animate={{ y: [0, 10, 0] }}
+  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
+  className="absolute -right-8 bottom-32 bg-white rounded-xl p-4 shadow-xl z-30 max-w-[140px] hidden md:block"
+>
+  <div className="flex items-center gap-2 mb-1">
+    <div className="w-2 h-2 rounded-full bg-blue-500" />
+    <span className="text-xs font-bold text-slate-800">Preview</span>
+  </div>
+  <div className="text-sm text-slate-600 leading-tight">
+    So könnte deine App aussehen.
+  </div>
+</motion.div>
+
 
           </motion.div>
         </div>

@@ -1,156 +1,134 @@
 "use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Linkedin, ArrowUpRight, ArrowUp } from "lucide-react";
 
 export default function Footer() {
-  
-  // Funktion zum sanften Hochscrollen
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="relative w-full bg-slate-950 pt-20 pb-10 overflow-hidden border-t border-white/10">
+    <footer className="relative w-full bg-[#020617] pt-24 pb-12 overflow-hidden">
       
-      {/* 1. HUGE WATERMARK BACKGROUND (Branding) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none select-none z-0">
-        <h1 className="text-[15vw] md:text-[12vw] font-black text-white/[0.02] text-center leading-none mt-10 tracking-tighter whitespace-nowrap">
+      {/* 1. Dekorativer Top-Border (Gradient Line) */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-50" />
+
+      {/* 2. Hintergrund-Effekte */}
+      {/* Feines Grid Pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.03]" 
+           style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
+      </div>
+      
+      {/* Blue Glow unten mitte */}
+      <div className="absolute bottom-[-200px] left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none z-0" />
+
+      {/* Großes Wasserzeichen (Subtiler) */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 pointer-events-none select-none z-0">
+        <h1 className="text-[12vw] font-black text-white/[0.02] tracking-tighter whitespace-nowrap blur-sm">
           PLESSING
         </h1>
       </div>
 
-      {/* 2. GLOW EFFECT */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none z-0" />
-
-      <div className="relative z-10 container mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         
-        {/* --- TOP SECTION: CTA & LOGO --- */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+        {/* === OBEN: BRAND & CTA === */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-24">
           
-          {/* Logo & Slogan */}
-          <div className="max-w-sm">
-            <Link href="/" className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-              Plessing<span className="text-blue-500">.</span>Consulting
+          {/* Brand Info */}
+          <div className="max-w-md space-y-6">
+            <Link href="/" className="inline-block">
+              <span className="text-2xl font-bold text-white tracking-tight">
+                Plessing<span className="text-blue-500">.</span>Consulting
+              </span>
             </Link>
-            <p className="mt-6 text-slate-400 leading-relaxed">
-              Wir bauen digitale Infrastrukturen für die Marktführer von morgen. 
-              Skalierbar, sicher und automatisiert.
+            <p className="text-gray-400 leading-relaxed text-base">
+              Software Engineering & IT Consulting mit Fokus auf klare Kommunikation,
+              saubere Entscheidungen und nachhaltige Lösungen.
             </p>
             
-            {/* Live Status Badge */}
-            <div className="mt-6 flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full w-fit backdrop-blur-md">
-              <span className="relative flex h-2.5 w-2.5">
+            {/* Status Indikator (Optionales Detail für Tech-Vibe) */}
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full w-fit border border-emerald-500/20">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span className="text-xs font-medium text-slate-300">
-                Systeme operational & bereit
-              </span>
+              Systems Operational
             </div>
           </div>
 
-          {/* Big CTA */}
+          {/* Main CTA */}
           <div className="flex flex-col items-start md:items-end">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              Bereit für das nächste Level?
+            <span className="text-sm font-mono text-blue-400 mb-2 tracking-wider uppercase">Let's work together</span>
+            <h3 className="text-3xl font-bold text-white mb-6 md:text-right">
+              Unverbindlich sprechen?
             </h3>
             <Link 
               href="/contact"
-              className="group flex items-center gap-3 text-xl font-bold text-blue-400 hover:text-blue-300 transition-colors"
+              className="group relative flex items-center gap-4 text-xl font-bold text-white transition-all"
             >
-              <span className="border-b border-blue-500/30 pb-1 group-hover:border-blue-400">
-                Projekt anfragen
+              <span className="relative z-10 border-b-2 border-blue-500/50 pb-1 group-hover:border-blue-400 transition-colors">
+                Kurzcall anfragen
               </span>
-              <ArrowUpRight className="w-6 h-6 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-500 group-hover:shadow-blue-500/40">
+                <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </div>
             </Link>
-            <a href="mailto:info@plessing.consulting" className="mt-4 text-slate-500 hover:text-white transition-colors">
-              info@plessing.consulting
+          </div>
+        </div>
+
+        {/* === MITTE: LINKS === */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-t border-white/5 pt-12 mb-12">
+          
+          {/* Spalte 1: Rechtliches */}
+          <div className="md:col-span-3">
+            <h4 className="text-white font-semibold mb-6">Rechtliches</h4>
+            <ul className="space-y-3">
+              {['Impressum', 'Datenschutz'].map((item, idx) => (
+                <li key={idx}>
+                  <Link 
+                    href={`/${item.toLowerCase()}`} 
+                    className="text-gray-400 hover:text-blue-400 text-sm transition-colors flex items-center gap-2 group"
+                  >
+                    <span className="h-px w-0 bg-blue-400 transition-all group-hover:w-2" />
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Spalte 2: Kontakt / Social */}
+          <div className="md:col-span-3">
+            <h4 className="text-white font-semibold mb-6">Connect</h4>
+            <a
+              href="https://www.linkedin.com/in/luca-samuel-ple%C3%9Fing-233336274/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-800 border border-gray-700 transition-colors group-hover:bg-[#0077b5] group-hover:border-[#0077b5] group-hover:text-white">
+                 <Linkedin size={16} />
+              </div>
+              <span className="text-sm font-medium">LinkedIn</span>
             </a>
           </div>
+
+           {/* Leere Spalte für Abstand (Layout Balance) */}
+           <div className="md:col-span-6"></div>
         </div>
 
-        {/* --- MIDDLE SECTION: LINKS GRID --- */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-white/10 pt-16 mb-16">
-          
-          {/* Column 1: Navigation */}
-          <div>
-            <h4 className="text-white font-bold mb-6">Menu</h4>
-            <ul className="space-y-4">
-              {["Home", "Leistungen", "Portfolio", "Über uns"].map((item) => (
-                <li key={item}>
-                  <Link href={`/${item.toLowerCase().replace(" ", "-")}`} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 2: Services */}
-          <div>
-            <h4 className="text-white font-bold mb-6">Leistungen</h4>
-            <ul className="space-y-4">
-              {["Web Development", "Automatisierung", "KI Integration", "Cloud Hosting"].map((item) => (
-                <li key={item}>
-                  <Link href="/services" className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Legal (WICHTIG!) */}
-          <div>
-            <h4 className="text-white font-bold mb-6">Rechtliches</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/impressum" className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                  Impressum
-                </Link>
-              </li>
-              <li>
-                <Link href="/datenschutz" className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                  Datenschutzerklärung
-                </Link>
-              </li>
-              <li>
-                <Link href="/agb" className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                  AGB
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Socials */}
-          <div>
-            <h4 className="text-white font-bold mb-6">Socials</h4>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-blue-600 hover:text-white text-slate-400 transition-all duration-300">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-black hover:text-white text-slate-400 transition-all duration-300">
-                <Github size={20} />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-sky-500 hover:text-white text-slate-400 transition-all duration-300">
-                <Twitter size={20} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* --- BOTTOM BAR --- */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-slate-500">
-          <p>
-            &copy; {new Date().getFullYear()} Plessing Consulting. All rights reserved. Made with <span className="text-red-500">♥</span> and Code.
+        {/* === UNTEN: COPYRIGHT & BACK TO TOP === */}
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
+          <p className="text-xs text-gray-500 font-mono">
+            © {new Date().getFullYear()} Plessing Consulting 
           </p>
           
           <button 
             onClick={scrollToTop} 
-            className="mt-4 md:mt-0 hover:text-white transition-colors flex items-center gap-1"
+            className="group flex items-center gap-2 rounded-full border border-white/5 bg-white/5 px-4 py-2 text-xs font-medium text-gray-300 transition-all hover:bg-white/10 hover:text-white"
           >
-            Back to top <ArrowUpRight className="w-3 h-3" />
+            Back to top
+            <ArrowUp className="w-3 h-3 transition-transform duration-300 group-hover:-translate-y-1" />
           </button>
         </div>
 
