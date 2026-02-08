@@ -17,7 +17,7 @@ export default function Hero() {
         {/* Das Bild selbst */}
         <Image
           src="/Gemini_Generated_Image_27ov5n27ov5n27ov.png"
-          alt="Future Tech Background"
+          alt="Digitaler Technologie-Hintergrund mit Netzwerklinien"
           fill
           priority
           className="object-cover"

@@ -15,7 +15,7 @@ export default function MobileAppCTA() {
         */}
         <Image 
           src="/Gemini_Generated_Image_idcb5idcb5idcb5i.png" 
-          alt="Abstrakter Technologie Hintergrund"
+          alt="Abstrakter Technologie-Hintergrund mit blauen Lichteffekten"
           fill
           // Wir mischen das Bild mit dem dunklen Hintergrund und machen es etwas transparent,
           // damit der Text davor gut lesbar bleibt.

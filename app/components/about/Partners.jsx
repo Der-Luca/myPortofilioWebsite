@@ -28,7 +28,7 @@ export default function Partners() {
         whileInView="show"
         whileHover={{ scale: 1.01 }}
         viewport={{ once: true }}
-        href="https://aiwrapps.com"
+        href="https://aiwrapps.com/"
         target="_blank"
         rel="noopener noreferrer"
         className="group relative block rounded-3xl border border-white/10 bg-gray-900/40 p-1 overflow-hidden transition-all duration-500 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-900/20"
@@ -44,7 +44,7 @@ export default function Partners() {
             <div className="flex h-32 w-32 md:h-40 md:w-40 items-center justify-center rounded-2xl border border-white/5 bg-white/5 p-4 shadow-inner backdrop-blur-sm transition-transform duration-500 group-hover:scale-105 group-hover:bg-white/10 group-hover:border-white/10">
               <img
                 src="https://aiwrapps.com/images/logo-aiwrapps.png"
-                alt="AIRAPPS Logo"
+                alt="AI Wrapps Logo"
                 className="max-h-full max-w-full object-contain drop-shadow-xl"
               />
             </div>
@@ -54,7 +54,7 @@ export default function Partners() {
           <div className="flex-1 pt-2">
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-2xl md:text-3xl font-bold text-white group-hover:text-blue-200 transition-colors">
-                AIRAPPS
+                AI Wrapps
               </h4>
               
               {/* Animated Arrow Icon */}
@@ -70,7 +70,7 @@ export default function Partners() {
 
             <p className="text-gray-300 leading-relaxed text-lg mb-6">
               Für größere oder komplexere Projekte arbeite ich in enger Synergie mit 
-              <span className="text-blue-400 font-semibold"> AIRAPPS</span> – einem eingespielten Team aus erfahrenen Senior-Entwicklern.
+              <span className="text-blue-400 font-semibold"> AI Wrapps</span> – einem eingespielten Team aus erfahrenen Senior-Entwicklern.
             </p>
 
             {/* Feature List / Badges */}

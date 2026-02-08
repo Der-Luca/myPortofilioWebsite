@@ -24,9 +24,9 @@ export default function Footer() {
 
       {/* Großes Wasserzeichen (Subtiler) */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 pointer-events-none select-none z-0">
-        <h1 className="text-[12vw] font-black text-white/[0.02] tracking-tighter whitespace-nowrap blur-sm">
+        <span aria-hidden="true" className="text-[12vw] font-black text-white/[0.02] tracking-tighter whitespace-nowrap blur-sm block">
           PLESSING
-        </h1>
+        </span>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
