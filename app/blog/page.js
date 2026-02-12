@@ -11,7 +11,7 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="min-h-screen text-gray-100">
+    <main className="min-h-screen bg-gray-950 text-gray-100">
       <Navbar />
 
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
