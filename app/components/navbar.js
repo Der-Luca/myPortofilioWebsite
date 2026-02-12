@@ -10,6 +10,7 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/#selected-work', label: 'Projekte' },
   { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 function NavLink({ href, label, active }) {
