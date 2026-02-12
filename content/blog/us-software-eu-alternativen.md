@@ -31,22 +31,13 @@ Bei US-Anbietern ist die Situation komplizierter. Zwar bieten viele „EU-Hostin
 
 **Digitale Souveränität** ist längst kein abstraktes Konzept mehr, sondern ein strategisches Ziel der Europäischen Union. Initiativen wie **Gaia-X**, der **EU Data Act** und milliardenschwere Förderprogramme für europäische Cloud-Infrastruktur zeigen: Europa meint es ernst.
 
-Für Unternehmen bedeutet digitale Souveränität vor allem drei Dinge:
-
-- **Kontrolle** über die eigenen Daten und Prozesse
-- **Unabhängigkeit** von einzelnen Anbietern und geopolitischen Entwicklungen
-- **Transparenz** darüber, wo Daten liegen und wer darauf zugreifen kann
+Für Unternehmen bedeutet digitale Souveränität vor allem drei Dinge: volle **Kontrolle** über die eigenen Daten und Prozesse, **Unabhängigkeit** von einzelnen Anbietern und geopolitischen Entwicklungen sowie **Transparenz** darüber, wo Daten liegen und wer darauf zugreifen kann.
 
 ## Europäische Alternativen – besser als ihr Ruf
 
-Viele Entscheider gehen davon aus, dass europäische Software nicht mit den großen US-Produkten mithalten kann. Das stimmt so nicht mehr. In vielen Bereichen gibt es hervorragende EU-Alternativen:
+Viele Entscheider gehen davon aus, dass europäische Software nicht mit den großen US-Produkten mithalten kann. Das stimmt so nicht mehr. In vielen Bereichen gibt es hervorragende EU-Alternativen.
 
-- **Kommunikation & Zusammenarbeit:** Nextcloud, Open-Xchange, Stackfield oder Rocket.Chat statt Microsoft Teams und Slack
-- **Cloud-Infrastruktur:** IONOS, Hetzner, OVHcloud oder Open Telekom Cloud statt AWS und Azure
-- **CRM:** SAP, Teamleader oder CentralStationCRM statt Salesforce
-- **Projektmanagement:** OpenProject, Hive oder Stackfield statt Asana und Monday.com
-- **E-Mail & Kalender:** Tutanota, Mailbox.org oder Open-Xchange statt Gmail und Outlook
-- **Analytics:** Matomo oder Plausible statt Google Analytics
+Im Bereich **Kommunikation und Zusammenarbeit** bieten Nextcloud, Open-Xchange, Stackfield oder Rocket.Chat echte Alternativen zu Microsoft Teams und Slack. Für **Cloud-Infrastruktur** setzen immer mehr Unternehmen auf IONOS, Hetzner, OVHcloud oder die Open Telekom Cloud statt auf AWS und Azure. Im **CRM-Bereich** stehen SAP, Teamleader oder CentralStationCRM als europäische Optionen bereit. Beim **Projektmanagement** überzeugen OpenProject, Hive oder Stackfield als Ersatz für Asana und Monday.com. Für **E-Mail und Kalender** bieten Tutanota, Mailbox.org oder Open-Xchange datenschutzkonforme Alternativen zu Gmail und Outlook. Und im Bereich **Analytics** ersetzen Matomo oder Plausible zunehmend Google Analytics.
 
 Diese Tools sind nicht nur DSGVO-konform, sondern oft auch **flexibler, günstiger und besser an europäische Geschäftsprozesse angepasst**.
 
@@ -54,23 +45,13 @@ Diese Tools sind nicht nur DSGVO-konform, sondern oft auch **flexibler, günstig
 
 Der Wille zum Wechsel ist bei vielen Unternehmen da. Die Herausforderung liegt in der Umsetzung. Eine Software-Migration betrifft nicht nur die IT-Abteilung – sie betrifft **jeden Mitarbeiter, jeden Prozess, jeden Workflow**.
 
-Typische Stolpersteine bei der Migration:
-
-- **Datenmigration:** E-Mails, Dokumente, CRM-Einträge – alles muss sauber übertragen werden
-- **Integrationen:** Bestehende Schnittstellen und Automatisierungen müssen neu aufgesetzt werden
-- **Schulung:** Mitarbeiter müssen mit den neuen Tools arbeiten können
-- **Parallelbetrieb:** Oft ist eine Übergangsphase nötig, in der beide Systeme laufen
-- **Compliance:** Der Wechsel selbst muss DSGVO-konform dokumentiert werden
+Typische Stolpersteine bei der Migration sind vielfältig. Die **Datenmigration** – E-Mails, Dokumente, CRM-Einträge – muss sauber und vollständig erfolgen. Bestehende **Integrationen** und Automatisierungen müssen neu aufgesetzt oder angepasst werden. Mitarbeiter brauchen **Schulung**, um mit den neuen Tools produktiv arbeiten zu können. Oft ist ein **Parallelbetrieb** nötig, in dem beide Systeme gleichzeitig laufen. Und nicht zuletzt muss der Wechsel selbst **DSGVO-konform** dokumentiert werden.
 
 ## Wie Plessing Consulting Sie beim Wechsel unterstützt
 
-Genau hier kommen wir ins Spiel. Bei **Plessing Consulting** begleiten wir Unternehmen ganzheitlich bei der Migration von US-Software auf europäische Alternativen:
+Genau hier kommen wir ins Spiel. Bei **Plessing Consulting** begleiten wir Unternehmen ganzheitlich bei der Migration von US-Software auf europäische Alternativen.
 
-- **Bestandsaufnahme:** Welche Tools nutzen Sie aktuell? Wo liegen die größten Abhängigkeiten und Risiken?
-- **Strategieentwicklung:** Welche europäischen Alternativen passen zu Ihren Anforderungen? Was ist realistisch, was ist Wunschdenken?
-- **Technische Migration:** Wir übernehmen die Datenmigration, richten neue Systeme ein und sorgen für saubere Integrationen
-- **Automatisierung:** Wir nutzen KI und Automatisierung, um Ihre neuen Workflows effizienter zu gestalten als die alten
-- **Schulung & Support:** Ihre Mitarbeiter werden nicht alleingelassen
+Wir beginnen mit einer umfassenden **Bestandsaufnahme**: Welche Tools nutzen Sie aktuell? Wo liegen die größten Abhängigkeiten und Risiken? Darauf aufbauend entwickeln wir eine **Strategie**, die zu Ihren Anforderungen passt – realistisch und pragmatisch. Die **technische Migration** übernehmen wir vollständig: Datenmigration, Einrichtung neuer Systeme und saubere Integrationen. Dabei nutzen wir **KI und Automatisierung**, um Ihre neuen Workflows effizienter zu gestalten als die alten. Und Ihre Mitarbeiter werden durch **Schulung und Support** nicht alleingelassen.
 
 Unser Ansatz ist pragmatisch: Nicht alles muss sofort umgestellt werden. Manchmal ist ein **hybrides Modell** der beste erste Schritt – kritische Daten auf europäische Infrastruktur migrieren, während weniger sensible Bereiche schrittweise folgen.
 

@@ -93,7 +93,7 @@ export default async function BlogPost({ params }) {
         <hr className="my-10 border-white/10" />
 
         <div
-          className="prose prose-invert prose-lg max-w-none
+          className="prose prose-invert prose-lg max-w-none text-justify
                      prose-headings:font-semibold prose-headings:tracking-tight
                      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-white
                      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-slate-200
