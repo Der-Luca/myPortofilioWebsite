@@ -2,6 +2,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '../../components/navbar';
 import { getAllPosts, getPostBySlug } from '../../../lib/blog';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeStringify from 'rehype-stringify';
+import './blog.css';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -24,39 +30,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
-function renderMarkdown(content) {
-  // Simple markdown to HTML (handles headings, bold, links, lists, paragraphs)
-  const lines = content.split('\n');
-  let html = '';
-  let inList = false;
-
-  for (const line of lines) {
-    const trimmed = line.trim();
-
-    if (trimmed.startsWith('## ')) {
-      if (inList) { html += '</ul>'; inList = false; }
-      html += `<h2>${trimmed.slice(3)}</h2>`;
-    } else if (trimmed.startsWith('### ')) {
-      if (inList) { html += '</ul>'; inList = false; }
-      html += `<h3>${trimmed.slice(4)}</h3>`;
-    } else if (trimmed.startsWith('- ')) {
-      if (!inList) { html += '<ul>'; inList = true; }
-      html += `<li>${inlineFormat(trimmed.slice(2))}</li>`;
-    } else if (trimmed === '') {
-      if (inList) { html += '</ul>'; inList = false; }
-    } else {
-      if (inList) { html += '</ul>'; inList = false; }
-      html += `<p>${inlineFormat(trimmed)}</p>`;
-    }
-  }
-  if (inList) html += '</ul>';
-  return html;
-}
-
-function inlineFormat(text) {
-  return text
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
+async function renderMarkdown(content) {
+  const result = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeHighlight, { ignoreMissing: true })
+    .use(rehypeStringify)
+    .process(content);
+  return String(result);
 }
 
 export default async function BlogPost({ params }) {
@@ -64,7 +45,7 @@ export default async function BlogPost({ params }) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const contentHtml = renderMarkdown(post.content);
+  const contentHtml = await renderMarkdown(post.content);
 
   return (
     <main className="min-h-screen bg-gray-950 text-gray-100">
@@ -93,7 +74,7 @@ export default async function BlogPost({ params }) {
         <hr className="my-10 border-white/10" />
 
         <div
-          className="prose prose-invert prose-lg max-w-none text-justify
+          className="blog-content prose prose-invert prose-lg max-w-none text-justify
                      prose-headings:font-semibold prose-headings:tracking-tight
                      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-white
                      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-slate-200
@@ -101,10 +82,15 @@ export default async function BlogPost({ params }) {
                      prose-li:text-slate-300 prose-li:leading-relaxed
                      prose-strong:text-white prose-strong:font-semibold
                      prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline
-                     prose-ul:my-4 prose-ul:space-y-1"
+                     prose-ul:my-4 prose-ul:space-y-1
+                     prose-code:text-cyan-300 prose-code:font-mono
+                     prose-pre:bg-gray-900 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto
+                     prose-blockquote:border-l-cyan-500 prose-blockquote:bg-gray-900/50 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:text-slate-300 prose-blockquote:not-italic
+                     prose-ol:my-4 prose-ol:space-y-1"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
       </article>
+
     </main>
   );
 }
