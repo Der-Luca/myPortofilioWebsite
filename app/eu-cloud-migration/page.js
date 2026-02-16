@@ -145,6 +145,21 @@ export default function EUCloudMigration() {
               So funktioniert&apos;s
             </a>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-6"
+          >
+            <Link
+              href="/eu-cloud-migration/risiko-check"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-orange-200 bg-orange-500/10 border border-orange-400/20 rounded-full hover:bg-orange-500/20 hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all duration-300"
+            >
+              <AlertTriangle className="w-4 h-4" />
+              Jetzt DSGVO-Risiko-Check machen →
+            </Link>
+          </motion.div>
         </div>
       </section>
 
