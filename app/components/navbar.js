@@ -11,6 +11,8 @@ const navItems = [
   { href: '/#selected-work', label: 'Projekte' },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
+  { href: '/eu-cloud-migration', label: 'EU Cloud' },
+  { href: '/eu-cloud-migration/risiko-check', label: 'DSGVO-Check' },
 ];
 
 function NavLink({ href, label, active }) {
