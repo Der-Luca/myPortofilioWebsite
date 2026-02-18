@@ -11,60 +11,60 @@ const categories = [
     title: 'E-Mail & Kommunikation',
     icon: Mail,
     questions: [
-      'Wir nutzen Microsoft 365 oder Google Workspace für E-Mails',
-      'Wir nutzen Slack, Microsoft Teams oder Zoom für Team-Kommunikation',
-      'Unsere E-Mails werden auf US-Servern gespeichert',
-      'Wir haben keinen Vertrag zur Auftragsverarbeitung (AVV) mit unserem E-Mail-Provider',
+      'Nutzen Sie Microsoft 365, Google Workspace oder einen ähnlichen Dienst?',
+      'Verwenden Sie Slack, Teams oder Zoom für die Team-Kommunikation?',
+      'Haben Sie einen DSGVO-Vertrag mit Ihrem E-Mail-Anbieter abgeschlossen?',
+      'Können Sie garantieren, dass Ihre E-Mails nur in der EU verarbeitet werden?',
     ],
   },
   {
     title: 'Cloud-Speicher & Dateien',
     icon: Cloud,
     questions: [
-      'Wir nutzen OneDrive, Google Drive oder Dropbox für Firmendaten',
-      'Kundendaten werden in US-Cloud-Speichern abgelegt',
-      'Wir haben keine Kontrolle, wo unsere Backups physisch liegen',
-      'Mitarbeiter nutzen private Cloud-Dienste für Firmendokumente',
+      'Speichern Sie Firmendaten in OneDrive, Google Drive oder Dropbox?',
+      'Liegen Kundendaten oder Verträge in Cloud-Diensten außerhalb der EU?',
+      'Wissen Sie, wo Ihre täglichen Backups physisch gespeichert werden?',
+      'Nutzen Mitarbeiter private Cloud-Apps für geschäftliche Dokumente?',
     ],
   },
   {
     title: 'Hosting & Infrastruktur',
     icon: Server,
     questions: [
-      'Unsere Website/App läuft auf AWS, Google Cloud oder Azure',
-      'Wir wissen nicht, in welchen Ländern unsere Server stehen',
-      'Wir haben keinen EU-only Hosting-Vertrag',
-      'Unsere Datenbanken enthalten personenbezogene Daten von EU-Bürgern',
+      'Läuft Ihre Website oder Software auf AWS, Google Cloud oder Azure?',
+      'Können Sie ausschließen, dass Ihre Daten auf US-Servern liegen?',
+      'Haben Sie einen Vertrag, der die Datenspeicherung nur in der EU garantiert?',
+      'Speichern Sie personenbezogene Daten (Namen, E-Mails, IPs) von Kunden?',
     ],
   },
   {
     title: 'Kunden & HR',
     icon: Users,
     questions: [
-      'Wir nutzen US-CRM-Systeme (Salesforce, HubSpot, etc.)',
-      'Unsere HR-Software speichert auf US-Servern',
-      'Bewerberdaten werden über Tools mit US-Rechtsrahmen verarbeitet',
-      'Wir haben keine Löschkonzepte für alte Mitarbeiter-/Kundendaten',
+      'Nutzen Sie ein CRM-System wie Salesforce, HubSpot oder Pipedrive?',
+      'Verwalten Sie Personalakten digital außerhalb Ihres eigenen Servers?',
+      'Werden Bewerberdaten über externe Plattformen verarbeitet?',
+      'Löschen Sie alte Kunden- und Mitarbeiterdaten regelmäßig und nachweisbar?',
     ],
   },
   {
     title: 'Compliance & Sicherheit',
     icon: Lock,
     questions: [
-      'Unser Datenschutzbeauftragter hat Bedenken geäußert',
-      'Wir sind von der NIS2-Richtlinie betroffen (KRITIS, 50+ MA, 10M+ Umsatz)',
-      'Wir hatten bereits DSGVO-Anfragen von Kunden/Behörden',
-      'Unser IT-Dienstleister kann keine EU-only Garantie geben',
+      'Hat Ihr Datenschutzbeauftragter Bedenken bezüglich Ihrer Cloud-Nutzung?',
+      'Sind Sie NIS2-pflichtig? (KRITIS, 50+ Mitarbeiter oder 10M€+ Umsatz)',
+      'Hatten Sie bereits Anfragen von Behörden oder Kunden zu Ihrem Datenschutz?',
+      'Kann Ihr IT-Partner garantieren, dass Daten nur in der EU verarbeitet werden?',
     ],
   },
   {
     title: 'Transparenz & Kontrolle',
     icon: Eye,
     questions: [
-      'Wir wissen nicht genau, welche Drittanbieter Zugriff auf unsere Daten haben',
-      'Wir können nicht nachvollziehen, wer wann auf welche Daten zugegriffen hat',
-      'Wir haben keinen Plan für Cloud-Exit-Strategie',
-      'Vendor Lock-In: Wechsel wäre technisch sehr aufwändig',
+      'Wissen Sie genau, welche externen Dienstleister Zugriff auf Ihre Daten haben?',
+      'Können Sie jederzeit nachvollziehen, wer auf welche Daten zugreift?',
+      'Haben Sie einen Notfallplan, falls Sie den Cloud-Anbieter wechseln müssen?',
+      'Wäre ein Wechsel zu einem anderen Anbieter technisch sehr aufwändig für Sie?',
     ],
   },
 ];
@@ -134,7 +134,7 @@ function Gauge({ score, maxScore = 24 }) {
         <circle cx="100" cy="110" r="3" fill="white" />
         {/* Labels */}
         <text x="18" y="118" fill="rgba(255,255,255,0.4)" fontSize="8" textAnchor="middle">0</text>
-        <text x="182" y="118" fill="rgba(255,255,255,0.4)" fontSize="8" textAnchor="middle">24</text>
+        <text x="182" y="118" fill="rgba(255,255,255,0.4)" fontSize="8" textAnchor="middle">{maxScore}</text>
       </svg>
       <motion.div
         key={score}
@@ -143,22 +143,63 @@ function Gauge({ score, maxScore = 24 }) {
         className="text-center -mt-4"
       >
         <span className="text-5xl font-black" style={{ color: risk.color }}>{score}</span>
-        <span className="text-slate-400 text-lg ml-1">/ 24</span>
+        <span className="text-slate-400 text-lg ml-1">/ {maxScore}</span>
       </motion.div>
     </div>
   );
 }
 
 export default function RisikoCheck() {
-  const [checked, setChecked] = useState({});
+  const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [showResults, setShowResults] = useState(false);
 
-  const score = useMemo(() => Object.values(checked).filter(Boolean).length, [checked]);
+  // Flatten all questions into a single array with metadata
+  const allQuestions = useMemo(() => {
+    const questions = [];
+    categories.forEach((cat, catIdx) => {
+      cat.questions.forEach((q, qIdx) => {
+        questions.push({
+          id: `${catIdx}-${qIdx}`,
+          question: q,
+          category: cat.title,
+          icon: cat.icon,
+        });
+      });
+    });
+    return questions;
+  }, []);
+
+  const score = useMemo(() => Object.values(answers).filter(Boolean).length, [answers]);
   const risk = getRiskLevel(score);
 
-  const toggle = (catIdx, qIdx) => {
-    const key = `${catIdx}-${qIdx}`;
-    setChecked(prev => ({ ...prev, [key]: !prev[key] }));
+  const handleAnswer = (value) => {
+    setAnswers(prev => ({ ...prev, [allQuestions[currentStep].id]: value }));
   };
+
+  const handleNext = () => {
+    if (currentStep < allQuestions.length - 1) {
+      setCurrentStep(prev => prev + 1);
+    } else {
+      setShowResults(true);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentStep > 0) {
+      setCurrentStep(prev => prev - 1);
+    }
+  };
+
+  const handleRestart = () => {
+    setCurrentStep(0);
+    setAnswers({});
+    setShowResults(false);
+  };
+
+  const currentQuestion = allQuestions[currentStep];
+  const currentAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
+  const progress = ((currentStep + 1) / allQuestions.length) * 100;
 
   return (
     <motion.main
@@ -202,7 +243,7 @@ export default function RisikoCheck() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-400 max-w-2xl mx-auto"
           >
-            Klicken Sie alle zutreffenden Aussagen an. Der Tacho zeigt Ihnen live, wie groß Ihr Handlungsbedarf ist.
+            Beantworten Sie {allQuestions.length} kurze Fragen zu Ihrer Cloud-Nutzung. Der Tacho zeigt Ihnen live, wie groß Ihr Handlungsbedarf ist.
           </motion.p>
         </div>
       </section>
@@ -210,96 +251,178 @@ export default function RisikoCheck() {
       {/* Main Content */}
       <section className="relative w-full py-12 px-6 bg-slate-950">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_360px] gap-12">
-          {/* Questions */}
-          <div className="space-y-8">
-            {categories.map((cat, catIdx) => {
-              const Icon = cat.icon;
-              return (
-                <motion.div
-                  key={catIdx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: catIdx * 0.05 }}
-                  className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-blue-400" />
-                    </div>
-                    <h3 className="text-lg font-bold text-white">{cat.title}</h3>
+          {/* Question Wizard */}
+          <div className="space-y-6">
+            {!showResults ? (
+              <>
+                {/* Progress Bar */}
+                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-slate-400">Fortschritt</span>
+                    <span className="text-sm font-bold text-white">
+                      {currentStep + 1} / {allQuestions.length}
+                    </span>
                   </div>
-                  <div className="space-y-3">
-                    {cat.questions.map((q, qIdx) => {
-                      const key = `${catIdx}-${qIdx}`;
-                      const isChecked = !!checked[key];
-                      return (
-                        <motion.label
-                          key={qIdx}
-                          whileHover={{ scale: 1.01 }}
-                          whileTap={{ scale: 0.99 }}
-                          className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer transition-colors ${
-                            isChecked
-                              ? 'bg-red-500/10 border border-red-400/20'
-                              : 'bg-white/[0.02] border border-transparent hover:bg-white/[0.04]'
+                  <div className="w-full h-2 bg-white/[0.05] rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                </div>
+
+                {/* Current Question */}
+                <AnimatePresence mode="wait">
+                  {currentQuestion && (
+                    <motion.div
+                      key={currentStep}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8"
+                    >
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                          {currentQuestion.icon && <currentQuestion.icon className="w-6 h-6 text-blue-400" />}
+                        </div>
+                        <div>
+                          <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">
+                            {currentQuestion.category}
+                          </p>
+                          <h3 className="text-lg font-bold text-white">Frage {currentStep + 1}</h3>
+                        </div>
+                      </div>
+
+                      <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-8">
+                        {currentQuestion.question}
+                      </p>
+
+                      {/* Answer Buttons */}
+                      <div className="grid grid-cols-2 gap-4 mb-8">
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => handleAnswer(true)}
+                          className={`px-8 py-6 rounded-xl text-lg font-bold transition-all ${
+                            currentAnswer === true
+                              ? 'bg-red-500/20 border-2 border-red-400 text-red-200 shadow-[0_0_30px_rgba(239,68,68,0.3)]'
+                              : 'bg-white/[0.03] border-2 border-white/[0.08] text-slate-300 hover:bg-white/[0.06] hover:border-white/[0.15]'
                           }`}
                         >
-                          <div className="mt-0.5 flex-shrink-0">
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              onChange={() => toggle(catIdx, qIdx)}
-                              className="sr-only"
-                            />
-                            <div
-                              className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
-                                isChecked
-                                  ? 'bg-red-500 border-red-500'
-                                  : 'border-slate-600 bg-transparent'
-                              }`}
-                            >
-                              {isChecked && (
-                                <motion.svg
-                                  initial={{ scale: 0 }}
-                                  animate={{ scale: 1 }}
-                                  className="w-3 h-3 text-white"
-                                  viewBox="0 0 12 12"
-                                >
-                                  <path
-                                    d="M2 6l3 3 5-5"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    fill="none"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </motion.svg>
-                              )}
-                            </div>
-                          </div>
-                          <span className={`text-sm leading-relaxed ${isChecked ? 'text-red-200' : 'text-slate-300'}`}>
-                            {q}
-                          </span>
-                        </motion.label>
-                      );
-                    })}
+                          <XCircle className={`w-6 h-6 mx-auto mb-2 ${currentAnswer === true ? 'text-red-400' : 'text-slate-400'}`} />
+                          Ja, trifft zu
+                        </motion.button>
+
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => handleAnswer(false)}
+                          className={`px-8 py-6 rounded-xl text-lg font-bold transition-all ${
+                            currentAnswer === false
+                              ? 'bg-green-500/20 border-2 border-green-400 text-green-200 shadow-[0_0_30px_rgba(34,197,94,0.3)]'
+                              : 'bg-white/[0.03] border-2 border-white/[0.08] text-slate-300 hover:bg-white/[0.06] hover:border-white/[0.15]'
+                          }`}
+                        >
+                          <CheckCircle className={`w-6 h-6 mx-auto mb-2 ${currentAnswer === false ? 'text-green-400' : 'text-slate-400'}`} />
+                          Nein, trifft nicht zu
+                        </motion.button>
+                      </div>
+
+                      {/* Navigation */}
+                      <div className="flex items-center justify-between">
+                        <button
+                          onClick={handlePrevious}
+                          disabled={currentStep === 0}
+                          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+                            currentStep === 0
+                              ? 'bg-white/[0.02] text-slate-600 cursor-not-allowed'
+                              : 'bg-white/[0.05] text-slate-300 hover:bg-white/[0.10] border border-white/[0.08]'
+                          }`}
+                        >
+                          Zurück
+                        </button>
+
+                        <button
+                          onClick={handleNext}
+                          disabled={currentAnswer === undefined}
+                          className={`px-8 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${
+                            currentAnswer === undefined
+                              ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
+                              : 'bg-blue-600 text-white hover:bg-blue-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]'
+                          }`}
+                        >
+                          {currentStep === allQuestions.length - 1 ? 'Ergebnis anzeigen' : 'Weiter'}
+                          <ArrowRight className="w-5 h-5" />
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </>
+            ) : (
+              /* Results View */
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8"
+              >
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-white mb-4">Ihre Analyse ist abgeschlossen</h2>
+                  <p className="text-slate-400 text-lg">
+                    Sie haben {score} von {allQuestions.length} Risikofaktoren identifiziert.
+                  </p>
+                </div>
+
+                <div className="mb-8">
+                  <Gauge score={score} maxScore={allQuestions.length} />
+                </div>
+
+                <div
+                  className="text-center p-6 rounded-xl mb-6"
+                  style={{ backgroundColor: risk.color + '18', border: `2px solid ${risk.color}33` }}
+                >
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <span className="text-4xl">{risk.emoji}</span>
+                    <h3 className="text-2xl font-bold" style={{ color: risk.color }}>
+                      {risk.label}
+                    </h3>
                   </div>
-                </motion.div>
-              );
-            })}
+                  <p className="text-lg text-slate-300 leading-relaxed">{risk.desc}</p>
+                </div>
+
+                <div className="space-y-3">
+                  <Link
+                    href="/contact"
+                    className="flex items-center justify-center gap-2 w-full px-6 py-4 text-base font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all"
+                  >
+                    Kostenlose Risikoanalyse buchen
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  <button
+                    onClick={handleRestart}
+                    className="flex items-center justify-center gap-2 w-full px-6 py-4 text-base font-bold text-slate-300 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all"
+                  >
+                    Nochmal starten
+                  </button>
+                </div>
+              </motion.div>
+            )}
           </div>
 
           {/* Sticky Gauge Sidebar */}
-          <div className="lg:sticky lg:top-8 lg:self-start">
+          <div className="lg:sticky lg:top-24 lg:self-start">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6"
             >
               <h3 className="text-center text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-                Ihr Risiko-Score
+                {showResults ? 'Ihr finales Ergebnis' : 'Aktueller Stand'}
               </h3>
-              <Gauge score={score} />
+              <Gauge score={score} maxScore={allQuestions.length} />
               <AnimatePresence mode="wait">
                 <motion.div
                   key={risk.label}
@@ -319,26 +442,15 @@ export default function RisikoCheck() {
                 </motion.div>
               </AnimatePresence>
 
-              {score > 0 && (
+              {!showResults && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="mt-6 space-y-3"
+                  className="mt-6 p-4 bg-white/[0.02] rounded-xl border border-white/[0.05]"
                 >
-                  <Link
-                    href="/contact"
-                    className="flex items-center justify-center gap-2 w-full px-6 py-3 text-sm font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all"
-                  >
-                    Kostenlose Risikoanalyse buchen
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <button
-                    onClick={() => alert('PDF-Download wird bald verfügbar sein!')}
-                    className="flex items-center justify-center gap-2 w-full px-6 py-3 text-sm font-bold text-slate-300 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all"
-                  >
-                    <Download className="w-4 h-4" />
-                    PDF-Checkliste herunterladen
-                  </button>
+                  <p className="text-xs text-slate-400 text-center">
+                    Beantworten Sie alle Fragen, um Ihr persönliches Risikoprofil zu erhalten.
+                  </p>
                 </motion.div>
               )}
             </motion.div>
