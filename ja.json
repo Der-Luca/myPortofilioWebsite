@@ -59,7 +59,7 @@
     "telegram": {
       "enabled": true,
       "dmPolicy": "pairing",
-      "botToken": "REDACTED_TOKEN",
+      "botToken": "REMOVED_FOR_SECURITY",
       "groupPolicy": "allowlist",
       "streamMode": "partial"
     }
