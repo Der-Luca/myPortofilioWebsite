@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Navbar from '../components/navbar';
-import { getAllPosts } from '../../lib/blog';
+import { getAllPosts } from '../../lib/blog-data';
 
 export const metadata = {
   title: 'Blog | Plessing Consulting',
