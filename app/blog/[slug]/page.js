@@ -1,13 +1,10 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '../../components/navbar';
-import { getAllPosts, getPostBySlug } from '../../../lib/blog';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeStringify from 'rehype-stringify';
-import './blog.css';
+import BlogAuthor from '../../components/blog/BlogAuthor';
+import BlogContent from '../../components/blog/BlogContent';
+import { getAllPosts, getPostBySlug } from '../../../lib/blog-data';
+import { Calendar, Clock, ArrowLeft, Share2, Bookmark } from 'lucide-react';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -15,8 +12,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(params.slug);
   if (!post) return {};
   return {
     title: `${post.title} | Plessing Consulting Blog`,
@@ -30,67 +26,115 @@ export async function generateMetadata({ params }) {
   };
 }
 
-async function renderMarkdown(content) {
-  const result = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeHighlight, { ignoreMissing: true })
-    .use(rehypeStringify)
-    .process(content);
-  return String(result);
-}
-
 export default async function BlogPost({ params }) {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(params.slug);
   if (!post) notFound();
-
-  const contentHtml = await renderMarkdown(post.content);
 
   return (
     <main className="min-h-screen bg-gray-950 text-gray-100">
       <Navbar />
 
-      <article className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-cyan-400 transition-colors mb-8"
-        >
-          ← Zurück zum Blog
-        </Link>
+      <article className="pt-28 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          {/* Back Link */}
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 
+                      hover:text-cyan-400 transition-colors mb-8"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Zurück zum Blog
+          </Link>
 
-        <time className="block text-sm text-slate-500 font-medium">
-          {new Date(post.date).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </time>
+          {/* Article Header */}
+          <header className="mb-12">
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {post.tags.map((tag) => (
+                <Link
+                  key={tag}
+                  href={`/blog?tag=${tag}`}
+                  className="px-3 py-1.5 text-sm font-medium bg-cyan-500/10 text-cyan-400 
+                           rounded-full border border-cyan-500/20 
+                           hover:bg-cyan-500/20 transition-colors"
+                >
+                  #{tag}
+                </Link>
+              ))}
+            </div>
 
-        <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent leading-tight">
-          {post.title}
-        </h1>
+            {/* Title */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight 
+                           bg-gradient-to-r from-white via-slate-100 to-slate-300 
+                           bg-clip-text text-transparent mb-6 leading-tight"
+            >
+              {post.title}
+            </h1>
 
-        <p className="mt-4 text-lg text-slate-400 leading-relaxed">
-          {post.description}
-        </p>
+            {/* Description */}
+            <p className="text-xl text-slate-400 leading-relaxed mb-8">
+              {post.description}
+            </p>
 
-        <hr className="my-10 border-white/10" />
+            {/* Meta */}
+            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500 
+                            border-b border-white/10 pb-8"
+            >
+              <span className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                {new Date(post.date).toLocaleDateString('de-DE', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                {post.readTime}
+              </span>
+              
+              <div className="flex gap-2 ml-auto">
+                <button className="p-2 rounded-full bg-white/[0.05] text-slate-400 
+                                  hover:bg-cyan-500/20 hover:text-cyan-400 transition-colors">
+                  <Share2 className="w-4 h-4" />
+                </button>
+                <button className="p-2 rounded-full bg-white/[0.05] text-slate-400 
+                                  hover:bg-cyan-500/20 hover:text-cyan-400 transition-colors">
+                  <Bookmark className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </header>
 
-        <div
-          className="blog-content prose prose-invert prose-lg max-w-none text-justify
-                     prose-headings:font-semibold prose-headings:tracking-tight
-                     prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-white
-                     prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-slate-200
-                     prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-4
-                     prose-li:text-slate-300 prose-li:leading-relaxed
-                     prose-strong:text-white prose-strong:font-semibold
-                     prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline
-                     prose-ul:my-4 prose-ul:space-y-1
-                     prose-code:text-cyan-300 prose-code:font-mono
-                     prose-pre:bg-gray-900 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto
-                     prose-blockquote:border-l-cyan-500 prose-blockquote:bg-gray-900/50 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:text-slate-300 prose-blockquote:not-italic
-                     prose-ol:my-4 prose-ol:space-y-1"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+          {/* Author Card */}
+          <div className="mb-12">
+            <BlogAuthor author={post.author} authorRole={post.authorRole} date={post.date} />
+          </div>
+
+          {/* Article Content */}
+          <div className="prose prose-invert prose-lg max-w-none">
+            <BlogContent content={post.content} />
+          </div>
+
+          {/* Article Footer */}
+          <div className="mt-16 pt-8 border-t border-white/10">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-slate-500 text-sm">
+                Veröffentlicht am {new Date(post.date).toLocaleDateString('de-DE')}
+              </p>
+              
+              <Link 
+                href="/blog"
+                className="inline-flex items-center gap-2 text-cyan-400 
+                          hover:text-cyan-300 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Alle Artikel ansehen
+              </Link>
+            </div>
+          </div>
+        </div>
       </article>
-
     </main>
   );
 }

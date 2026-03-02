@@ -1,4 +1,4 @@
-import { getAllPosts } from '../lib/blog';
+import { getAllPosts } from '../lib/blog-data';
 
 export default function sitemap() {
   const baseUrl = 'https://plessing-consulting.com';
