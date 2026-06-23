@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 // Falls du fadeUp / Animationsdateien hast:
 import { fadeUp } from './animations';
 
-const timeline = [
+export const timeline = [
   {
     period: '02/2022 – heute',
     title: 'Freelance Software Engineer & IT Consultant',
@@ -34,7 +34,7 @@ const timeline = [
   },
 ];
 
-export default function Timeline() {
+export default function Timeline({ items = timeline }) {
   return (
     <section className="px-6 py-24 max-w-5xl mx-auto">
       <motion.div
@@ -54,7 +54,7 @@ export default function Timeline() {
         <div className="absolute left-[19px] md:left-[35px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-purple-500 to-gray-800/20" />
 
         <div className="space-y-12">
-          {timeline.map((t, idx) => (
+          {items.map((t, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: -20 }}
@@ -105,9 +105,19 @@ export default function Timeline() {
                       {t.title}
                     </h4>
 
-                    <p className="text-gray-400 leading-relaxed text-base">
-                      {t.desc}
-                    </p>
+                    {Array.isArray(t.desc) ? (
+                      <div className="space-y-3">
+                        {t.desc.map((paragraph, i) => (
+                          <p key={i} className="text-gray-400 leading-relaxed text-base">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-400 leading-relaxed text-base">
+                        {t.desc}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

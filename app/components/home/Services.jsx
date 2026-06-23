@@ -13,7 +13,7 @@ export default function Services() {
   },
   {
     icon: <Bot className="w-10 h-10 text-purple-400" />,
-    title: "KI & AI-Lösungen",
+    title: "KI-Lösungen",
     desc: "Nutzen Sie künstliche Intelligenz nicht nur zum Spielen. Wir integrieren KI, die Dokumente versteht, Support-Anfragen smarter sortiert und Teams spürbar entlastet.",
     bullets: [
       "Eigene ChatGPT-Lösungen (RAG)",
