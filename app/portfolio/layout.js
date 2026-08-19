@@ -12,8 +12,9 @@ export const metadata = {
     type: "profile",
     locale: "de_DE",
     siteName: "Plessing Consulting",
-    images: [{ url: "https://plessing-consulting.com/logo.png" }],
+    images: [{ url: "/og.png", width: 1731, height: 909 }],
   },
+  robots: { index: false, follow: true },
 };
 
 export default function PortfolioLayout({ children }) {

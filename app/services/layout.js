@@ -1,16 +1,16 @@
 export const metadata = {
-  title: "Leistungen | Plessing Consulting",
-  description: "Unsere Leistungen: Prozess-Automatisierung, KI-Integration, Web- und App-Entwicklung sowie technische Beratung für den DACH-Raum.",
+  title: "CRM-Optimierung, Automatisierung & Systemintegration",
+  description: "Bestehende CRM-, ERP- und Fachsysteme verbinden, manuelle Prozesse automatisieren und Software-Lücken gezielt schließen.",
   alternates: {
     canonical: "https://plessing-consulting.com/services",
   },
   openGraph: {
-    title: "Leistungen | Plessing Consulting",
-    description: "Unsere Leistungen: Prozess-Automatisierung, KI-Integration, Web- und App-Entwicklung sowie technische Beratung für den DACH-Raum.",
+    title: "CRM-Optimierung, Automatisierung & Systemintegration",
+    description: "Bestehende Systeme besser nutzen, Datenflüsse verbinden und manuelle Arbeit reduzieren.",
     type: "website",
     locale: "de_DE",
     siteName: "Plessing Consulting",
-    images: [{ url: "https://plessing-consulting.com/logo.png" }],
+    images: [{ url: "/og.png", width: 1731, height: 909 }],
   },
 };
 

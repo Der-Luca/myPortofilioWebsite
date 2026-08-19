@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Linkedin, ArrowUpRight, ArrowUp } from "lucide-react";
+import { openCookieSettings } from "../SiteVisitTracker";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -42,8 +43,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 leading-relaxed text-base">
-              Software Engineering & IT Consulting mit Fokus auf klare Kommunikation,
-              saubere Entscheidungen und nachhaltige Lösungen.
+              CRM-Optimierung, Automatisierung und Systemintegration für Unternehmen,
+              die ihre vorhandene Software besser nutzen möchten.
             </p>
             
             {/* Status Indikator (Optionales Detail für Tech-Vibe) */}
@@ -52,22 +53,22 @@ export default function Footer() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              Systems Operational
+              Direkter Ansprechpartner
             </div>
           </div>
 
           {/* Main CTA */}
           <div className="flex flex-col items-start md:items-end">
-            <span className="text-sm font-mono text-blue-400 mb-2 tracking-wider uppercase">Let's work together</span>
+            <span className="text-sm font-mono text-blue-400 mb-2 tracking-wider uppercase">Ihr nächster sinnvoller Schritt</span>
             <h3 className="text-3xl font-bold text-white mb-6 md:text-right">
-              Unverbindlich sprechen?
+              Wo hakt Ihr Ablauf?
             </h3>
             <Link 
               href="/contact"
               className="group relative flex items-center gap-4 text-xl font-bold text-white transition-all"
             >
               <span className="relative z-10 border-b-2 border-blue-500/50 pb-1 group-hover:border-blue-400 transition-colors">
-                Kurzcall anfragen
+                Ablauf besprechen
               </span>
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-500 group-hover:shadow-blue-500/40">
                 <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -78,6 +79,19 @@ export default function Footer() {
 
         {/* === MITTE: LINKS === */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-t border-white/5 pt-12 mb-12">
+          <div className="md:col-span-3">
+            <h4 className="text-white font-semibold mb-6">Übersicht</h4>
+            <ul className="space-y-3">
+              {[
+                ['Leistungen', '/services'],
+                ['Projekte', '/projects'],
+                ['Über mich', '/about'],
+                ['Kontakt', '/contact'],
+              ].map(([label, href]) => (
+                <li key={href}><Link href={href} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{label}</Link></li>
+              ))}
+            </ul>
+          </div>
           
           {/* Spalte 1: Rechtliches */}
           <div className="md:col-span-3">
@@ -94,6 +108,12 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button onClick={openCookieSettings} className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-blue-400">
+                  <span className="h-px w-0 bg-blue-400 transition-all group-hover:w-2" />
+                  Cookie-Einstellungen
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -113,8 +133,7 @@ export default function Footer() {
             </a>
           </div>
 
-           {/* Leere Spalte für Abstand (Layout Balance) */}
-           <div className="md:col-span-6"></div>
+           <div className="md:col-span-3"></div>
         </div>
 
         {/* === UNTEN: COPYRIGHT & BACK TO TOP === */}
@@ -127,7 +146,7 @@ export default function Footer() {
             onClick={scrollToTop} 
             className="group flex items-center gap-2 rounded-full border border-white/5 bg-white/5 px-4 py-2 text-xs font-medium text-gray-300 transition-all hover:bg-white/10 hover:text-white"
           >
-            Back to top
+            Nach oben
             <ArrowUp className="w-3 h-3 transition-transform duration-300 group-hover:-translate-y-1" />
           </button>
         </div>

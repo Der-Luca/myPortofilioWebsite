@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/#selected-work', label: 'Projekte' },
-  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Leistungen' },
+  { href: '/projects', label: 'Projekte' },
+  { href: '/about', label: 'Über mich' },
 ];
 
 function NavLink({ href, label, active }) {
@@ -80,7 +80,7 @@ export default function Navbar() {
               Plessing Consulting
             </span>
             <span className="text-[0.65rem] text-slate-300/80 uppercase tracking-wider font-medium">
-              Automatisierung & KI
+              CRM · Integration · Automation
             </span>
           </div>
         </Link>
@@ -97,13 +97,14 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
+            data-track="Navigation: Erstgespräch"
             className="ml-3 rounded-2xl bg-gradient-to-r from-blue-500/90 to-cyan-400/90
                        px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_35px_rgba(37,99,235,0.55)]
                        hover:from-blue-400 hover:to-cyan-300 hover:shadow-[0_14px_40px_rgba(37,99,235,0.75)]
                        active:scale-[0.98] transition
                        focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/80 focus-visible:ring-offset-0"
           >
-            Kontakt
+            Erstgespräch
           </Link>
         </div>
 
@@ -169,6 +170,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contact"
+                data-track="Mobile Navigation: Kontakt aufnehmen"
                  // Klick schließt das Menü
                 onClick={() => setOpen(false)}
                 className="mt-4 w-full rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500

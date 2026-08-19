@@ -19,12 +19,15 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs \
- && adduser --system --uid 1001 nextjs
+ && adduser --system --uid 1001 nextjs \
+ && mkdir -p /app/data /app/scripts \
+ && chown -R nextjs:nodejs /app/data /app/scripts
 
 # Next.js standalone output
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/scripts/seo-scheduler.mjs ./scripts/seo-scheduler.mjs
 
 USER nextjs
 EXPOSE 3000

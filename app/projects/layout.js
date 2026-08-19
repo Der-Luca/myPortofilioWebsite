@@ -1,16 +1,16 @@
 export const metadata = {
-  title: "Projekte & Referenzen | Plessing Consulting",
-  description: "Ausgewählte Projekte und Referenzen von Plessing Consulting – Automatisierung, KI-Lösungen und individuelle Softwareentwicklung.",
+  title: "Case Studies: Automatisierung & Systemintegration",
+  description: "Praxisbeispiele für Systemintegration, Prozessautomatisierung und individuelle Software – mit Ausgangslage, Lösung und geschäftlichem Nutzen.",
   alternates: {
     canonical: "https://plessing-consulting.com/projects",
   },
   openGraph: {
-    title: "Projekte & Referenzen | Plessing Consulting",
-    description: "Ausgewählte Projekte und Referenzen von Plessing Consulting – Automatisierung, KI-Lösungen und individuelle Softwareentwicklung.",
+    title: "Case Studies: Automatisierung & Systemintegration",
+    description: "Praxisbeispiele mit Ausgangslage, technischer Lösung und Nutzen für den Arbeitsalltag.",
     type: "website",
     locale: "de_DE",
     siteName: "Plessing Consulting",
-    images: [{ url: "https://plessing-consulting.com/logo.png" }],
+    images: [{ url: "/og.png", width: 1731, height: 909 }],
   },
 };
 

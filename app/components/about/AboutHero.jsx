@@ -32,8 +32,8 @@ export default function AboutHero() {
   const chips = [
     'Klare Kommunikation',
     'Strukturierte Beratung',
-    'Technische Entscheidungsfindung',
-    'Langfristige Lösungen',
+    'Bestehende Systeme verstehen',
+    'Pragmatische Lösungen',
     'Verlässliche Zusammenarbeit',
   ];
 
@@ -67,20 +67,19 @@ export default function AboutHero() {
             variants={itemVariants} 
             className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-white"
           >
-            Software Engineering <br />
-            mit <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">
-              klarer Beratung
-            </span>.
+            Technik verstehen. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">
+              Prozesse besser machen.
+            </span>
           </motion.h1>
 
           <motion.p 
             variants={itemVariants} 
             className="text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0"
           >
-            Ich unterstütze Unternehmen dabei, technische Entscheidungen sicher zu treffen
-            und Softwareprojekte strukturiert umzusetzen.
-            Mit klarer Kommunikation, realistischen Einschätzungen und einem Fokus
-            auf Lösungen, die langfristig funktionieren.
+            Ich bin Luca-Samuel Pleßing, selbstständiger IT-Berater und Software Engineer.
+            Ich verbinde Prozessverständnis mit technischer Umsetzung – damit nicht einfach
+            neue Software entsteht, sondern eine Lösung, die im Arbeitsalltag wirklich hilft.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-2">
@@ -99,7 +98,7 @@ export default function AboutHero() {
               href="/contact"
               className="w-full sm:w-auto text-center rounded-xl bg-blue-600 px-8 py-4 text-base font-bold text-white transition-all hover:bg-blue-500 hover:scale-[1.02] shadow-lg shadow-blue-500/25"
             >
-              Unverbindlichen Kurzcall anfragen
+              Einen Ablauf besprechen
             </a>
             <div className="text-sm text-gray-500 flex items-center gap-2">
               <span className="hidden sm:inline-block h-px w-8 bg-gray-800"></span>

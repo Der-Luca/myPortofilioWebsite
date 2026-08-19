@@ -5,7 +5,6 @@ import { useState, useRef } from 'react';
 import Navbar from '../components/navbar';
 import Footers from '../components/home/Footer';
 import { 
-  Phone, 
   Send, 
   Loader2, 
   CheckCircle2, 
@@ -99,7 +98,7 @@ export default function Contact() {
             Kontakt aufnehmen
           </h1>
           <p className="mt-6 text-lg text-gray-400 font-light leading-relaxed">
-            Gib uns kurz die wichtigsten Infos (Ziel, Zeitraum, Budget). Wir melden uns zeitnah.
+            Beschreiben Sie einen Ablauf, der heute unnötig Zeit kostet, Fehler verursacht oder zwischen mehreren Systemen festhängt. Sie müssen die technische Lösung noch nicht kennen.
           </p>
         </motion.div>
 
@@ -119,7 +118,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className={labelClasses}><User className="w-3 h-3" /> Name</label>
-                    <input name="name" required placeholder="Dein Name" className={inputClasses} />
+                    <input name="name" required placeholder="Ihr Name" className={inputClasses} />
                   </div>
                   <div className="space-y-2">
                     <label className={labelClasses}><Mail className="w-3 h-3" /> E-Mail</label>
@@ -138,7 +137,7 @@ export default function Contact() {
                     name="message"
                     required
                     rows={6}
-                    placeholder="Erzähle uns von deinem Projekt..."
+                    placeholder="Wie läuft der Prozess heute ab? Wo entsteht Aufwand oder gehen Informationen verloren?"
                     className={`${inputClasses} resize-none`}
                   />
                 </div>
@@ -193,11 +192,6 @@ export default function Contact() {
 
           {/* SIDEBAR */}
           <div className="lg:col-span-4 flex flex-col gap-5">
-            <motion.a variants={item} href="tel:+4917632279415" className="group flex items-center gap-5 p-5 rounded-3xl border border-white/5 bg-gray-900/40 backdrop-blur-md">
-              <Phone className="w-5 h-5 text-blue-400" />
-              <span className="text-sm text-gray-300">Jetzt anrufen</span>
-            </motion.a>
-
             <motion.a variants={item} href="https://www.linkedin.com/in/luca-samuel-ple%C3%9Fing-233336274" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5 p-5 rounded-3xl border border-white/5 bg-gray-900/40 backdrop-blur-md">
               <Linkedin className="w-5 h-5 text-[#0077b5]" />
               <span className="text-sm text-gray-300">LinkedIn</span>
@@ -212,7 +206,7 @@ export default function Contact() {
                 Status
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Wir melden uns in der Regel innerhalb von 24 Stunden.
+                Ich melde mich in der Regel innerhalb von 24 Stunden persönlich bei Ihnen.
               </p>
             </motion.div>
           </div>
@@ -229,4 +223,3 @@ export default function Contact() {
 
 
 
- 

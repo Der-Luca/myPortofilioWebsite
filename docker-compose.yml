@@ -1,11 +1,36 @@
 services:
   app:
+    image: plessing-portfolio:latest
     build:
       context: .
       dockerfile: Dockerfile
     container_name: portfolio-app
     restart: unless-stopped
     env_file:
-      - .env
+      - ${ENV_FILE:-.env}
     ports:
       - "127.0.0.1:3003:3000"
+    volumes:
+      - seo-data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  seo-scheduler:
+    image: plessing-portfolio:latest
+    container_name: portfolio-seo-scheduler
+    restart: unless-stopped
+    command: ["node", "scripts/seo-scheduler.mjs"]
+    env_file:
+      - ${ENV_FILE:-.env}
+    environment:
+      SEO_SYNC_URL: http://app:3000/api/seo/sync
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  seo-data:

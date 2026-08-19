@@ -1,216 +1,112 @@
-'use client';
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
+import Navbar from "../components/navbar";
+import Footer from "../components/home/Footer";
 
-import { motion } from 'framer-motion';
-import Navbar from '../components/navbar';
+const cases = [
+  {
+    id: "immobot",
+    accent: "emerald",
+    label: "Systemintegration · Automatisierung",
+    title: "Immobot: Anfragen aus mehr als 40 Immobilienportalen zentral verarbeiten",
+    situation: "Immobilienanfragen und Objektdaten kommen über viele unterschiedliche Plattformen und Datenformate. Ohne zentrale Logik entsteht wiederkehrende manuelle Arbeit.",
+    challenge: "Daten mussten zuverlässig übernommen, vereinheitlicht, gefiltert und für weitere Schritte verfügbar gemacht werden – einschließlich Karten- und Radiussuche.",
+    solution: "Automatisierte Datenpipelines, n8n-Workflows und robuste Schnittstellen verbinden Portale, WordPress und die zentrale Anwendung. Flexible Filter und Benachrichtigungen unterstützen die weitere Bearbeitung.",
+    benefit: "Statt Informationen aus zahlreichen Quellen einzeln zusammenzuführen, steht ein zentraler, erweiterbarer Ablauf für die tägliche Arbeit zur Verfügung.",
+    facts: ["40+ angebundene Portale", "Automatisierte Feeds", "Zentrale Filterlogik"],
+    tech: ["n8n", "REST APIs", "WordPress", "Leaflet", "MapTiler"],
+    url: "https://immobot.pro",
+  },
+  {
+    id: "peaches",
+    accent: "pink",
+    label: "Individuelle Software · Geschäftslogik",
+    title: "Peaches: Komplexe HR-Abläufe in einer Plattform bündeln",
+    situation: "Unterschiedliche Nutzergruppen, Inhalte und administrative Aufgaben sollten in einer gemeinsamen, mehrsprachigen Plattform abgebildet werden.",
+    challenge: "Rollen, Rechte, Medien, Kurse und weitere Module benötigten eine stabile Architektur sowie eine verständliche Administrationsoberfläche.",
+    solution: "Eine modulare Plattform mit React/Next.js, Express und PostgreSQL bildet die Geschäftslogik ab und lässt sich strukturiert betreiben und erweitern.",
+    benefit: "Komplexe HR-Prozesse werden an einem Ort verwaltet, während Nutzer eine klare und sprachunabhängige Oberfläche erhalten.",
+    facts: ["Mehrsprachige Nutzung", "Rollen und Rechte", "Modulare Verwaltung"],
+    tech: ["Next.js", "Express", "PostgreSQL", "Docker", "Nginx"],
+    url: "https://peaches-benefits.com",
+  },
+  {
+    id: "sauber",
+    accent: "blue",
+    label: "Webprozess · Kontaktanfragen",
+    title: "Die Saubermachfrau: Kontaktanfragen ohne täglichen Spam",
+    situation: "Gesucht war keine überladene Plattform, sondern eine verständliche Website mit einem zuverlässig nutzbaren Kontaktweg.",
+    challenge: "Das Formular sollte einfach bleiben, gleichzeitig aber automatisierte Spam-Anfragen wirksam reduzieren.",
+    solution: "Eine responsive Website mit sicherem Kontaktformular, serverseitigen Prüfungen und direkter Benachrichtigung über neue Anfragen.",
+    benefit: "Interessenten können unkompliziert Kontakt aufnehmen, ohne dass der Posteingang durch wiederkehrenden Formularspam unbrauchbar wird.",
+    facts: ["Responsives Interface", "Spamschutz", "Direkte Benachrichtigung"],
+    tech: ["Next.js", "Tailwind CSS", "API Route", "Hosting"],
+  },
+];
 
-const container = {
-  hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { when: 'beforeChildren', staggerChildren: 0.05 } },
+const accentStyles = {
+  emerald: "border-emerald-400/20 bg-emerald-400/5 text-emerald-300",
+  pink: "border-pink-400/20 bg-pink-400/5 text-pink-300",
+  blue: "border-blue-400/20 bg-blue-400/5 text-blue-300",
 };
-const item = { hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, transition: { duration: 0.3 } } };
 
-function ProjectCard({ p }) {
+export default function ProjectsPage() {
   return (
-    <motion.article
-      variants={item}
-      className="group overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/40 shadow-sm transition hover:border-blue-500"
-    >
-      <div className="relative h-56 w-full overflow-hidden">
-        <img
-          src={p.img}
-          alt={p.alt}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        {/* leichte Gradient-Overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/0" />
-      </div>
-
-      <div className="p-6">
-        <h3 className="text-2xl font-semibold">{p.title}</h3>
-        <p className="mt-2 text-gray-300">{p.summary}</p>
-
-        {/* Highlights / Ergebnisse */}
-        {p.highlights?.length > 0 && (
-          <ul className="mt-4 space-y-2 text-gray-300 list-disc pl-5">
-            {p.highlights.map((h) => (
-              <li key={h}>{h}</li>
-            ))}
-          </ul>
-        )}
-
-        {/* Tech-Tags */}
-        {p.tags?.length > 0 && (
-          <div className="mt-5 flex flex-wrap gap-2">
-            {p.tags.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-gray-800 bg-gray-900/60 px-3 py-1 text-xs text-gray-300"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {/* CTA */}
-        <div className="mt-6 flex items-center gap-3">
-          <a
-            href={p.ctaHref}
-            className="rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold hover:bg-blue-600 transition"
-          >
-            {p.ctaLabel}
-          </a>
-          {p.secondaryHref && (
-            <a
-              href={p.secondaryHref}
-              className="rounded-xl border border-gray-700 px-4 py-2 text-sm font-semibold hover:bg-gray-900 transition"
-            >
-              {p.secondaryLabel || 'Mehr erfahren'}
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.article>
-  );
-}
-
-export default function Projects() {
-  const projects = [
-    {
-      img: '/peaches.jpg',
-      alt: 'Projekt Peaches',
-      title: 'Peaches – modulare SaaS-Plattform',
-      summary:
-        'B2B/B2C-Plattform mit Admin-UI, Mehrsprachigkeit, Rollen & Rechten, stabilem Express-Backend und Postgres.',
-      highlights: [
-        'Skalierbare Architektur + saubere Admin-Oberfläche',
-        'Auth, Medienverwaltung, Kurse/Module, DSGVO-ready',
-        'Docker + Nginx + Backups (produktive Umgebung)',
-      ],
-      tags: ['React/Next.js', 'Express', 'PostgreSQL', 'Docker', 'Nginx', 'Multi-Language'],
-      ctaLabel: 'Use-Case besprechen',
-      ctaHref: '/contact?project=peaches',
-      secondaryHref: '/projects#peaches',
-      secondaryLabel: 'Kurzdetails',
-    },
-    {
-      img: '/immobot.jpg',
-      alt: 'Projekt Immobot',
-      title: 'Immobot – automatisierte Immobiliensuche',
-      summary:
-        'Datenpipelines mit n8n, Kartenintegration (Leaflet/MapTiler) und dynamische Filter – täglich aktualisiert.',
-      highlights: [
-        'Automatisierte Feeds & Benachrichtigungen',
-        'Koordinaten-/Radiussuche, flexible Filterlogik',
-        'WordPress ⇆ n8n Integration, robuste JSON-APIs',
-      ],
-      tags: ['n8n', 'Leaflet', 'MapTiler', 'WordPress', 'REST', 'Automation'],
-      ctaLabel: 'Automation anfragen',
-      ctaHref: '/contact?project=immobot',
-      secondaryHref: '/projects#immobot',
-    },
-    {
-      img: '/sauber.jpg',
-      alt: 'Projekt Die Saubermachfrau',
-      title: 'Die Saubermachfrau – Website & Leads',
-      summary:
-        'Klar strukturiertes, responsives Web – inkl. sicherem Kontaktformular, Spamschutz und stabilem Hosting.',
-      highlights: ['Schnelle Ladezeiten & mobile UX', 'Kontakt/WhatsApp-Integration', 'Wartungsfreundliche Struktur'],
-      tags: ['Next.js', 'Tailwind', 'SEO-Basics', 'Hosting'],
-      ctaLabel: 'Ähnliche Seite bauen',
-      ctaHref: '/contact?project=saubermachfrau',
-      secondaryHref: '/projects#sauber',
-    },
-  ];
-
-  const testimonials = [
-    {
-      quote:
-        '„Die SaaS-Plattform Peaches läuft stabil und performant. Architektur & Admin-UI sind top strukturiert.“',
-      author: 'Fabian, Peaches',
-    },
-    {
-      quote:
-        '„Die Automatisierungen in Immobot sparen enorm Zeit. Kartenintegration und Filterlogik passen perfekt.“',
-      author: 'Christoph, Immobot',
-    },
-    {
-      quote:
-        '„Super Arbeit! Kontaktformular und WhatsApp-Integration waren für uns extrem hilfreich.“',
-      author: 'Heike Strigel, Die Saubermachfrau',
-    },
-  ];
-
-  return (
-    <motion.main
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className="min-h-screen bg-gray-950 text-gray-100"
-    >
+    <main className="min-h-screen bg-slate-950 text-slate-100">
       <Navbar />
-
-      {/* Hero */}
-      <section className="px-6 pt-28 md:pt-32 text-center max-w-5xl mx-auto">
-        <motion.h1 variants={item} className="text-4xl md:text-6xl font-bold leading-tight">
-          Projekte & Resultate
-        </motion.h1>
-        <motion.p variants={item} className="mt-4 text-gray-300 md:text-lg">
-          Ausgewählte Cases mit klarem Fokus auf <strong>Stabilität</strong>, <strong>Speed</strong> und
-          <strong> messbaren Ergebnissen</strong>.
-        </motion.p>
+      <section className="border-b border-white/10 px-6 pb-24 pt-36 text-center">
+        <div className="mx-auto max-w-4xl">
+          <p className="text-sm font-bold uppercase tracking-[.22em] text-blue-400">Projekte und Ergebnisse</p>
+          <h1 className="mt-5 text-5xl font-black tracking-[-.04em] text-white sm:text-6xl">Technik ist nur ein Teil der Geschichte.</h1>
+          <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-300">Entscheidend ist, was danach im Arbeitsalltag besser funktioniert. Deshalb zeigen diese Beispiele Ausgangslage, Herausforderung, Lösung und Nutzen.</p>
+        </div>
       </section>
 
-      {/* Projects Grid */}
-      <section className="px-6 py-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((p) => (
-          <ProjectCard key={p.title} p={p} />
-        ))}
-      </section>
-
-      {/* Testimonials */}
-      <section className="px-6 pt-4 pb-12 max-w-6xl mx-auto">
-        <motion.h2 variants={item} className="text-3xl md:text-4xl font-bold text-center mb-8">
-          Stimmen von Kunden
-        </motion.h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <motion.blockquote
-              key={i}
-              variants={item}
-              className="rounded-2xl border border-gray-800 bg-gray-900/40 p-6"
-            >
-              <p className="text-gray-200 italic leading-relaxed"> {t.quote} </p>
-              <footer className="mt-3 text-sm text-gray-400">— {t.author}</footer>
-            </motion.blockquote>
+      <section className="px-6 py-24">
+        <div className="mx-auto max-w-6xl space-y-10">
+          {cases.map((project) => (
+            <article id={project.id} key={project.id} className="scroll-mt-28 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[.035]">
+              <div className={`border-b p-8 sm:p-10 ${accentStyles[project.accent]}`}>
+                <p className="text-sm font-bold uppercase tracking-[.17em]">{project.label}</p>
+                <h2 className="mt-4 max-w-4xl text-3xl font-bold leading-tight text-white sm:text-4xl">{project.title}</h2>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  {project.facts.map((fact) => <span key={fact} className="rounded-full border border-white/10 bg-slate-950/40 px-4 py-2 text-sm text-slate-200">{fact}</span>)}
+                </div>
+              </div>
+              <div className="grid gap-px bg-white/10 md:grid-cols-2">
+                {[
+                  ["Ausgangssituation", project.situation],
+                  ["Herausforderung", project.challenge],
+                  ["Umsetzung", project.solution],
+                  ["Nutzen", project.benefit],
+                ].map(([heading, text]) => (
+                  <div key={heading} className="bg-slate-950 p-8 sm:p-10">
+                    <h3 className="text-sm font-bold uppercase tracking-[.15em] text-slate-500">{heading}</h3>
+                    <p className="mt-4 leading-7 text-slate-300">{text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col justify-between gap-5 border-t border-white/10 px-8 py-6 sm:flex-row sm:items-center sm:px-10">
+                <div className="flex flex-wrap gap-2">{project.tech.map((item) => <span key={item} className="rounded-lg bg-white/5 px-3 py-1.5 text-xs text-slate-400">{item}</span>)}</div>
+                {project.url && <Link href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 font-bold text-blue-300 hover:text-blue-200">Projekt ansehen <ExternalLink className="h-4 w-4" /></Link>}
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="px-6 pb-20 max-w-4xl mx-auto text-center">
-        <motion.div
-          variants={item}
-          className="rounded-2xl border border-gray-800 p-8 bg-gradient-to-b from-gray-900 to-gray-950"
-        >
-          <h3 className="text-3xl font-bold">Interesse an einem ähnlichen Ergebnis?</h3>
-          <p className="text-gray-300 mt-3">
-            Kurzcall (20–30 Min.): Ziele, Systeme, Quick-Wins. Ich skizziere dir den Weg zum Go-Live.
-          </p>
-          <div className="mt-6 flex items-center justify-center gap-4">
-            <a href="/contact" className="rounded-xl bg-blue-500 px-6 py-3 font-semibold hover:bg-blue-600 transition">
-              Kostenloses Erstgespräch
-            </a>
-            <a
-              href="/services"
-              className="rounded-xl border border-gray-700 px-6 py-3 font-semibold hover:bg-gray-900 transition"
-            >
-              Leistungen ansehen
-            </a>
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border border-white/10 bg-slate-900/70 p-9 sm:p-12">
+          <p className="text-sm font-bold uppercase tracking-[.18em] text-emerald-300">Ihr Fall muss nicht genauso aussehen</p>
+          <h2 className="mt-4 text-3xl font-bold text-white">Ein wiederkehrendes Problem reicht als Ausgangspunkt.</h2>
+          <p className="mt-5 max-w-3xl leading-7 text-slate-300">Ob CRM, Excel-Tabelle, Branchenlösung oder E-Mail-Prozess: Wir betrachten zuerst, was heute passiert und welche Verbesserung im Verhältnis zum Aufwand sinnvoll ist.</p>
+          <div className="mt-7 flex flex-wrap gap-4">
+            <Link href="/contact" data-track="Projekte: Eigenen Ablauf besprechen" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-bold hover:bg-blue-500">Eigenen Ablauf besprechen <ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/services" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/15 px-6 py-3 font-bold hover:bg-white/5">Leistungen ansehen</Link>
           </div>
-        </motion.div>
+        </div>
       </section>
-    </motion.main>
+      <Footer />
+    </main>
   );
 }

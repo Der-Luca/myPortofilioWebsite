@@ -1,16 +1,16 @@
 export const metadata = {
   title: "Kontakt | Plessing Consulting",
-  description: "Nehmen Sie Kontakt mit Plessing Consulting auf – kostenlose Erstberatung für Ihre Software- und KI-Projekte.",
+  description: "Besprechen Sie einen manuellen oder fehleranfälligen Geschäftsprozess – unverbindliche Ersteinschätzung zu CRM, Automatisierung und Systemintegration.",
   alternates: {
     canonical: "https://plessing-consulting.com/contact",
   },
   openGraph: {
     title: "Kontakt | Plessing Consulting",
-    description: "Nehmen Sie Kontakt mit Plessing Consulting auf – kostenlose Erstberatung für Ihre Software- und KI-Projekte.",
+    description: "Unverbindliche Ersteinschätzung für CRM-, Automatisierungs- und Integrationsprobleme.",
     type: "website",
     locale: "de_DE",
     siteName: "Plessing Consulting",
-    images: [{ url: "https://plessing-consulting.com/logo.png" }],
+    images: [{ url: "/og.png", width: 1731, height: 909 }],
   },
 };
 

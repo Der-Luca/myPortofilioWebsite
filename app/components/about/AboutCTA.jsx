@@ -32,18 +32,18 @@ export default function AboutCTA() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
-            Jetzt Slots für Q1/Q2 sichern
+            Unverbindliche Ersteinschätzung
           </div>
 
           {/* 3. Headline & Text */}
           <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            Lass uns über deinen <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Use-Case sprechen.</span>
+            Welcher Ablauf kostet Ihr Team <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">heute unnötig Zeit?</span>
           </h2>
           
           <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed">
-            Kein Sales-Skript, sondern 20–30 Minuten technischer Deep-Dive. 
-            Wir klären Ziele, identifizieren Quick-Wins und prüfen die Machbarkeit.
+            Kein Tool-Pitch: Wir betrachten einen konkreten Prozess, suchen den eigentlichen
+            Engpass und prüfen, welcher nächste Schritt wirtschaftlich sinnvoll ist.
           </p>
 
           {/* 4. Action Buttons */}
@@ -55,13 +55,13 @@ export default function AboutCTA() {
               className="relative w-full sm:w-auto group inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:bg-blue-500 hover:scale-[1.02] shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40"
             >
               <Calendar className="w-5 h-5" />
-              <span>Erstgespräch vereinbaren</span>
+              <span>Ablauf besprechen</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
 
             {/* Secondary Button (Projekte) */}
             <a 
-              href="/#selected-work" 
+              href="/projects"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-8 py-4 text-base font-semibold text-gray-300 transition-all hover:bg-white/10 hover:text-white hover:border-white/20"
             >
               <Layers className="w-5 h-5 text-gray-500 group-hover:text-white" />
