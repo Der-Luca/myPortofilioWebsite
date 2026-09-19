@@ -30,8 +30,8 @@ const problems = [
   },
   {
     icon: RefreshCw,
-    title: "Excel hält den Prozess zusammen",
-    text: "Die Tabelle funktioniert irgendwie – bis jemand krank ist, eine Spalte ändert oder das Volumen wächst.",
+    title: "Absprachen halten den Prozess zusammen",
+    text: "Der Ablauf funktioniert vor allem, weil einzelne Mitarbeitende nachfragen, erinnern und fehlende Informationen persönlich ergänzen.",
   },
   {
     icon: PlugZap,
@@ -44,22 +44,22 @@ const services = [
   {
     number: "01",
     icon: Settings2,
-    title: "CRM und Abläufe verbessern",
-    text: "Ich analysiere, wo Informationen verloren gehen, Arbeit doppelt anfällt oder Ihr CRM nicht zum tatsächlichen Prozess passt.",
-    result: "Weniger Nachpflege, klarere Zuständigkeiten und ein CRM, das im Alltag wirklich genutzt wird.",
+    title: "Geschäftsabläufe verstehen und verbessern",
+    text: "Ich analysiere, wo Informationen verloren gehen, Zuständigkeiten unklar bleiben oder ein Vorgang unnötig ins Stocken gerät.",
+    result: "Klare Übergaben, weniger Rückfragen und ein Ablauf, der auch bei Wachstum tragfähig bleibt.",
   },
   {
     number: "02",
     icon: Network,
-    title: "Bestehende Systeme verbinden",
-    text: "CRM, ERP, Portale, E-Mail und Fachsoftware werden über APIs, Webhooks oder n8n zuverlässig miteinander verbunden.",
+    title: "Informationen zuverlässig weitergeben",
+    text: "Vorhandene Anwendungen werden so aufeinander abgestimmt, dass relevante Informationen dem Geschäftsprozess folgen.",
     result: "Daten fließen automatisch und bleiben dort aktuell, wo Ihr Team sie braucht.",
   },
   {
     number: "03",
     icon: Workflow,
-    title: "Manuelle Prozesse automatisieren",
-    text: "Wiederkehrende Schritte wie Erfassung, Prüfung, Benachrichtigung oder Übergabe werden nachvollziehbar automatisiert.",
+    title: "Wiederkehrende Arbeit gezielt reduzieren",
+    text: "Stabile Routinen wie Erfassung, Prüfung, Benachrichtigung oder Übergabe werden dort automatisiert, wo es wirtschaftlich sinnvoll ist.",
     result: "Mehr Zeit für wertvolle Arbeit, weniger Fehler und kürzere Durchlaufzeiten.",
   },
   {
@@ -74,7 +74,7 @@ const services = [
 const process = [
   ["01", "Den echten Ablauf verstehen", "Nicht: Welche Software wollen Sie? Sondern: Wie läuft ein typischer Vorgang heute wirklich ab – und wo stockt er?"],
   ["02", "Den Engpass finden", "Wir trennen Symptome von Ursachen und priorisieren die Stellen, an denen Zeit, Datenqualität oder Umsatz verloren gehen."],
-  ["03", "Die einfachste sinnvolle Lösung wählen", "Manchmal reicht eine bessere CRM-Konfiguration. Manchmal braucht es n8n, eine API oder ein kleines eigenes Tool."],
+  ["03", "Die einfachste sinnvolle Lösung wählen", "Manchmal reicht eine klarere Zuständigkeit. Manchmal müssen vorhandene Systeme besser zusammenspielen oder gezielt ergänzt werden."],
   ["04", "Umsetzen und im Alltag prüfen", "Die Lösung wird schrittweise eingeführt, dokumentiert und gemeinsam mit den Menschen getestet, die täglich damit arbeiten."],
 ];
 
@@ -91,30 +91,30 @@ export default function Home() {
           <div>
             <p className="mb-7 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200">
               <span className="h-2 w-2 rounded-full bg-cyan-300" />
-              CRM · Automatisierung · Systemintegration
+              Prozessoptimierung · verbundene Abläufe · Umsetzung
             </p>
             <h1 className="max-w-4xl text-5xl font-black leading-[1.02] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
-              Weniger manuelle Arbeit.
+              Damit Ihre Abläufe
               <span className="mt-2 block bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-                Besser verbundene Systeme.
+                wirklich zusammenspielen.
               </span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-              Ich helfe Unternehmen dabei, bestehende CRM-, ERP- und Fachsysteme sinnvoll zu verbinden, wiederkehrende Abläufe zu automatisieren und Software-Lücken pragmatisch zu schließen.
+              Ich analysiere und verbessere Geschäftsprozesse, bei denen Informationen verloren gehen, Zuständigkeiten unklar bleiben oder vorhandene Systeme nicht sinnvoll zusammenspielen.
             </p>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
-              Das Ziel ist nicht möglichst viel neue Software. Das Ziel ist ein Arbeitsalltag mit weniger Übertragen, Nachfragen und Fehlern.
+              Von der Bestandsaufnahme bis zur funktionierenden Umsetzung – für Unternehmen im DACH-Raum.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link href="/contact" data-track="Hero: Ablauf besprechen" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-blue-600 px-7 py-4 font-bold text-white shadow-[0_18px_50px_rgba(37,99,235,.28)] transition hover:-translate-y-0.5 hover:bg-blue-500">
-                Ablauf unverbindlich besprechen <ArrowRight className="h-5 w-5" />
+                Prozess unverbindlich besprechen <ArrowRight className="h-5 w-5" />
               </Link>
               <Link href="/projects" className="inline-flex min-h-14 items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-7 py-4 font-bold text-white transition hover:bg-white/10">
                 Praxisbeispiele ansehen
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-slate-400">
-              {["Bestehende Systeme weiter nutzen", "Direkter Ansprechpartner", "Für Unternehmen im DACH-Raum"].map((item) => (
+              {["Bestehende Systeme weiter nutzen", "Analyse und Umsetzung aus einer Hand", "Für Unternehmen im DACH-Raum"].map((item) => (
                 <span key={item} className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-400" />{item}</span>
               ))}
             </div>
@@ -134,8 +134,8 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-2 text-blue-300"><Link2 className="h-6 w-6" /><span className="h-24 w-px bg-gradient-to-b from-transparent via-blue-400 to-transparent" /></div>
                 <div className="rounded-2xl border border-blue-400/30 bg-blue-500/10 p-5">
                   <Workflow className="h-7 w-7 text-cyan-300" />
-                  <p className="mt-4 font-bold text-white">Automatisierter Ablauf</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">Erfassen, prüfen, weitergeben und informieren – ohne Copy & Paste.</p>
+                  <p className="mt-4 font-bold text-white">Durchgängiger Ablauf</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">Erfassen, prüfen und weitergeben – mit klaren Zuständigkeiten.</p>
                 </div>
               </div>
               <div className="mt-6 rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">✓ Informationen dort, wo sie gebraucht werden</div>
@@ -170,7 +170,7 @@ export default function Home() {
               <p className="text-sm font-bold uppercase tracking-[.2em] text-cyan-400">Was sich konkret verbessert</p>
               <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">Lösungen rund um Ihren tatsächlichen Ablauf.</h2>
               <p className="mt-6 text-lg leading-8 text-slate-400">Nicht jede Lücke braucht ein neues System. Ich prüfe zuerst, was bereits vorhanden ist und wo eine gezielte Anpassung den größten Hebel hat.</p>
-              <Link href="/services" className="mt-8 inline-flex items-center gap-2 font-bold text-blue-300 hover:text-blue-200">Alle Leistungen im Detail <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/prozessoptimierung" className="mt-8 inline-flex items-center gap-2 font-bold text-blue-300 hover:text-blue-200">Prozessoptimierung im Detail <ArrowRight className="h-4 w-4" /></Link>
             </div>
             <div className="space-y-5">
               {services.map(({ number, icon: Icon, title, text, result }) => (

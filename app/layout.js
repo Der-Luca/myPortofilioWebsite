@@ -3,23 +3,23 @@ import SiteVisitTracker from "./components/SiteVisitTracker";
 
 export const metadata = {
   metadataBase: new URL("https://plessing-consulting.com"),
-  title: "CRM-Optimierung & Automatisierung | Plessing Consulting",
-  description: "Bestehende CRM-, ERP- und Fachsysteme verbinden, manuelle Abläufe automatisieren und Software-Lücken pragmatisch schließen.",
+  title: "Prozessoptimierung für Unternehmen | Plessing Consulting",
+  description: "Geschäftsprozesse verbessern und bestehende Systeme sinnvoll zusammenspielen lassen – für Unternehmen im DACH-Raum.",
   alternates: {
     canonical: "https://plessing-consulting.com",
   },
   openGraph: {
-    title: "Weniger manuelle Arbeit. Besser verbundene Systeme.",
-    description: "CRM-Optimierung, Prozessautomatisierung und Systemintegration für Unternehmen im DACH-Raum.",
+    title: "Damit Abläufe über Teams und Systeme hinweg funktionieren.",
+    description: "Prozessoptimierung und das bessere Zusammenspiel vorhandener Systeme für Unternehmen im DACH-Raum.",
     type: "website",
     locale: "de_DE",
     siteName: "Plessing Consulting",
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Weniger manuelle Arbeit. Besser verbundene Systeme." }],
+    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Prozessoptimierung und verbundene Abläufe – Plessing Consulting" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Weniger manuelle Arbeit. Besser verbundene Systeme.",
-    description: "CRM-Optimierung, Automatisierung und Systemintegration für bestehende Softwarelandschaften.",
+    title: "Damit Abläufe über Teams und Systeme hinweg funktionieren.",
+    description: "Prozessoptimierung und besser verbundene Abläufe für Unternehmen im DACH-Raum.",
     images: ["/og.png"],
   },
 };
@@ -39,10 +39,18 @@ export default function RootLayout({ children }) {
                   "@id": "https://plessing-consulting.com/#business",
                   name: "Plessing Consulting",
                   url: "https://plessing-consulting.com",
-                  description: "CRM-Optimierung, Prozessautomatisierung und Systemintegration für Unternehmen mit bestehenden Softwarelandschaften.",
+                  description: "Prozessoptimierung und das bessere Zusammenspiel bestehender Systeme für Unternehmen im DACH-Raum.",
                   areaServed: ["DE", "AT", "CH"],
                   email: "luca@plessing-consulting.com",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "Carrer Costa Bona 8, Piso 4-1",
+                    postalCode: "08033",
+                    addressLocality: "Barcelona",
+                    addressCountry: "ES",
+                  },
                   founder: { "@id": "https://plessing-consulting.com/#person" },
+                  knowsAbout: ["Prozessoptimierung", "Geschäftsprozessanalyse", "CRM-Prozesse", "Systemintegration", "Prozessautomatisierung"],
                 },
                 {
                   "@type": "Person",

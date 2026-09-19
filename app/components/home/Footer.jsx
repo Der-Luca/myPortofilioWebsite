@@ -43,8 +43,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 leading-relaxed text-base">
-              CRM-Optimierung, Automatisierung und Systemintegration für Unternehmen,
-              die ihre vorhandene Software besser nutzen möchten.
+              Prozessoptimierung und das bessere Zusammenspiel vorhandener Systeme
+              für Unternehmen im DACH-Raum.
             </p>
             
             {/* Status Indikator (Optionales Detail für Tech-Vibe) */}
@@ -80,44 +80,31 @@ export default function Footer() {
         {/* === MITTE: LINKS === */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-t border-white/5 pt-12 mb-12">
           <div className="md:col-span-3">
-            <h4 className="text-white font-semibold mb-6">Übersicht</h4>
+            <h4 className="text-white font-semibold mb-6">Leistungen</h4>
             <ul className="space-y-3">
               {[
-                ['Leistungen', '/services'],
-                ['Projekte', '/projects'],
-                ['Über mich', '/about'],
-                ['Kontakt', '/contact'],
+                ['Prozessoptimierung', '/prozessoptimierung'],
+                ['Systeme verbinden', '/systeme-verbinden'],
+                ['CRM-Prozesse', '/crm-prozesse-optimieren'],
+                ['EspoCRM', '/integrationen/espocrm'],
               ].map(([label, href]) => (
                 <li key={href}><Link href={href} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{label}</Link></li>
               ))}
             </ul>
           </div>
           
-          {/* Spalte 1: Rechtliches */}
           <div className="md:col-span-3">
-            <h4 className="text-white font-semibold mb-6">Rechtliches</h4>
+            <h4 className="text-white font-semibold mb-6">Einblicke</h4>
             <ul className="space-y-3">
-              {['Impressum', 'Datenschutz'].map((item, idx) => (
-                <li key={idx}>
-                  <Link 
-                    href={`/${item.toLowerCase()}`} 
-                    className="text-gray-400 hover:text-blue-400 text-sm transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="h-px w-0 bg-blue-400 transition-all group-hover:w-2" />
-                    {item}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <button onClick={openCookieSettings} className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-blue-400">
-                  <span className="h-px w-0 bg-blue-400 transition-all group-hover:w-2" />
-                  Cookie-Einstellungen
-                </button>
-              </li>
+              {[
+                ['Case Studies', '/projects'],
+                ['Optimieren oder automatisieren?', '/wissen/prozessoptimierung-oder-automatisierung'],
+                ['CRM optimieren oder wechseln?', '/wissen/crm-optimieren-oder-wechseln'],
+                ['Über mich', '/about'],
+              ].map(([label, href]) => <li key={href}><Link href={href} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{label}</Link></li>)}
             </ul>
           </div>
 
-          {/* Spalte 2: Kontakt / Social */}
           <div className="md:col-span-3">
             <h4 className="text-white font-semibold mb-6">Connect</h4>
             <a
@@ -133,7 +120,13 @@ export default function Footer() {
             </a>
           </div>
 
-           <div className="md:col-span-3"></div>
+          <div className="md:col-span-3">
+            <h4 className="text-white font-semibold mb-6">Rechtliches</h4>
+            <ul className="space-y-3">
+              {['Impressum', 'Datenschutz'].map((item) => <li key={item}><Link href={`/${item.toLowerCase()}`} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{item}</Link></li>)}
+              <li><button onClick={openCookieSettings} className="text-sm text-gray-400 transition-colors hover:text-blue-400">Cookie-Einstellungen</button></li>
+            </ul>
+          </div>
         </div>
 
         {/* === UNTEN: COPYRIGHT & BACK TO TOP === */}

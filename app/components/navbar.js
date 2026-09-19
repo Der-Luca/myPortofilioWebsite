@@ -80,7 +80,7 @@ export default function Navbar() {
               Plessing Consulting
             </span>
             <span className="text-[0.65rem] text-slate-300/80 uppercase tracking-wider font-medium">
-              CRM · Integration · Automation
+              Prozesse · Systeme · Umsetzung
             </span>
           </div>
         </Link>

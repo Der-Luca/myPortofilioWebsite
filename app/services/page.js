@@ -6,26 +6,29 @@ import Footer from "../components/home/Footer";
 const offers = [
   {
     id: "crm-optimierung",
+    href: "/crm-prozesse-optimieren",
     icon: Settings2,
     eyebrow: "CRM- und Prozessoptimierung",
     title: "Wenn das CRM da ist, aber der Ablauf trotzdem daneben stattfindet.",
-    intro: "Viele Teams pflegen ihr CRM nur teilweise, arbeiten zusätzlich in Excel oder verlieren Informationen zwischen Vertrieb, Administration und Leistungserbringung.",
+    intro: "Viele Teams pflegen ihr CRM nur teilweise oder verlieren Informationen zwischen Vertrieb, Administration und Leistungserbringung.",
     questions: ["Welche Daten werden mehrfach eingegeben?", "Wo fehlen klare Status und Zuständigkeiten?", "Welche Schritte lassen sich direkt im bestehenden CRM verbessern?"],
     outcome: "Ein verständlicher, alltagstauglicher Ablauf – ohne vorschnell das gesamte CRM zu ersetzen.",
   },
   {
     id: "systemintegration",
+    href: "/systeme-verbinden",
     icon: Network,
-    eyebrow: "Systemintegration und APIs",
-    title: "Wenn jedes System funktioniert – aber keines mit dem anderen spricht.",
+    eyebrow: "Bestehende Systeme verbinden",
+    title: "Wenn Informationen an den Übergängen zwischen Anwendungen verloren gehen.",
     intro: "CRM, ERP, Online-Portale, Buchhaltung, E-Mail und Fachsoftware enthalten oft dieselben Informationen. Fehlt die Verbindung, übernimmt Ihr Team den Datentransport.",
-    questions: ["Welche Systeme müssen Daten austauschen?", "Gibt es APIs, Webhooks oder Exportmöglichkeiten?", "Welche Fehler- und Ausnahmefälle müssen sichtbar bleiben?"],
+    questions: ["Welche Informationen werden an welcher Stelle benötigt?", "Welches System ist für welche Daten verantwortlich?", "Welche Fehler- und Ausnahmefälle müssen sichtbar bleiben?"],
     outcome: "Zuverlässige Datenflüsse mit nachvollziehbarem Monitoring und klarer Fehlerbehandlung.",
   },
   {
     id: "prozessautomatisierung",
+    href: "/wissen/prozessoptimierung-oder-automatisierung",
     icon: Workflow,
-    eyebrow: "Prozess- und n8n-Automatisierung",
+    eyebrow: "Prozessautomatisierung",
     title: "Wenn ein wiederkehrender Ablauf jeden Tag wieder Zeit kostet.",
     intro: "Erfassen, prüfen, kopieren, weiterleiten, erinnern: Einzelne Schritte wirken klein. In Summe binden sie Zeit und erzeugen vermeidbare Fehler.",
     questions: ["Was löst den Prozess aus?", "Welche Entscheidungen sind regelbasiert?", "Wo braucht es weiterhin einen Menschen?"],
@@ -33,6 +36,7 @@ const offers = [
   },
   {
     id: "individuelle-software",
+    href: "/prozessoptimierung",
     icon: Code2,
     eyebrow: "Individuelle Software-Erweiterungen",
     title: "Wenn Standardsoftware fast passt – und genau dieses ‚fast‘ zum Problem wird.",
@@ -57,13 +61,14 @@ export default function ServicesPage() {
 
       <section className="px-6 py-24">
         <div className="mx-auto max-w-7xl space-y-7">
-          {offers.map(({ id, icon: Icon, eyebrow, title, intro, questions, outcome }, index) => (
+          {offers.map(({ id, href, icon: Icon, eyebrow, title, intro, questions, outcome }) => (
             <article id={id} key={id} className="scroll-mt-28 rounded-[2rem] border border-white/10 bg-white/[.035] p-8 sm:p-10 lg:p-12">
               <div className="grid gap-10 lg:grid-cols-[.95fr_1.05fr]">
                 <div>
                   <div className="flex items-center gap-3 text-blue-300"><Icon className="h-6 w-6" /><span className="text-sm font-bold uppercase tracking-[.16em]">{eyebrow}</span></div>
                   <h2 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl">{title}</h2>
                   <p className="mt-5 leading-7 text-slate-400">{intro}</p>
+                  <Link href={href} className="mt-6 inline-flex items-center gap-2 font-bold text-blue-300 hover:text-blue-200">Mehr erfahren <ArrowRight className="h-4 w-4" /></Link>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-slate-950/70 p-6 sm:p-8">
                   <p className="text-sm font-bold uppercase tracking-[.15em] text-slate-500">Dabei klären wir</p>

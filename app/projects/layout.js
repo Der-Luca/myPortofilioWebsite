@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "Case Studies: Automatisierung & Systemintegration",
-  description: "Praxisbeispiele für Systemintegration, Prozessautomatisierung und individuelle Software – mit Ausgangslage, Lösung und geschäftlichem Nutzen.",
+  title: "Case Studies zur Prozessoptimierung",
+  description: "Praxisbeispiele für bessere Geschäftsabläufe, verbundene Systeme und gezielte Automatisierung – mit Ausgangslage, Verbesserung und Nutzen.",
   alternates: {
     canonical: "https://plessing-consulting.com/projects",
   },
   openGraph: {
-    title: "Case Studies: Automatisierung & Systemintegration",
-    description: "Praxisbeispiele mit Ausgangslage, technischer Lösung und Nutzen für den Arbeitsalltag.",
+    title: "Case Studies zur Prozessoptimierung",
+    description: "Praxisbeispiele mit Ausgangslage, Verbesserung und Nutzen für den Arbeitsalltag.",
     type: "website",
     locale: "de_DE",
     siteName: "Plessing Consulting",

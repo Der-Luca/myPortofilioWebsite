@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "CRM-Optimierung, Automatisierung & Systemintegration",
-  description: "Bestehende CRM-, ERP- und Fachsysteme verbinden, manuelle Prozesse automatisieren und Software-Lücken gezielt schließen.",
+  title: "Leistungen: Prozessoptimierung und verbundene Abläufe",
+  description: "Geschäftsprozesse analysieren, vorhandene Systeme besser zusammenspielen lassen und Verbesserungen wirksam umsetzen.",
   alternates: {
     canonical: "https://plessing-consulting.com/services",
   },
   openGraph: {
-    title: "CRM-Optimierung, Automatisierung & Systemintegration",
-    description: "Bestehende Systeme besser nutzen, Datenflüsse verbinden und manuelle Arbeit reduzieren.",
+    title: "Prozessoptimierung und verbundene Abläufe",
+    description: "Abläufe verstehen, Reibungsverluste beseitigen und vorhandene Systeme sinnvoll einbinden.",
     type: "website",
     locale: "de_DE",
     siteName: "Plessing Consulting",
