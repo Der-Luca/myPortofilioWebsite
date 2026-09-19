@@ -2,6 +2,8 @@
 
 set -Eeuo pipefail
 
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 PROJECT_DIR="/home/luca/services/myPortfolio"
 COMPOSE_SERVICES=(app seo-scheduler)
 ROLLBACK_IMAGE="plessing-portfolio:rollback"
