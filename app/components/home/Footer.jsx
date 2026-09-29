@@ -86,6 +86,7 @@ export default function Footer() {
                 ['Prozessoptimierung', '/prozessoptimierung'],
                 ['Systeme verbinden', '/systeme-verbinden'],
                 ['CRM-Prozesse', '/crm-prozesse-optimieren'],
+                ['B2B Tech Sales', '/tech-sales'],
                 ['EspoCRM', '/integrationen/espocrm'],
               ].map(([label, href]) => (
                 <li key={href}><Link href={href} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{label}</Link></li>

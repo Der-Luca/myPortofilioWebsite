@@ -8,6 +8,7 @@ export default function sitemap() {
     { url: `${baseUrl}/contact`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/projects`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/services`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/tech-sales`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/prozessoptimierung`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/systeme-verbinden`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/crm-prozesse-optimieren`, lastModified, changeFrequency: 'monthly', priority: 0.9 },

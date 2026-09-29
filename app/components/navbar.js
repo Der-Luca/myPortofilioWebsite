@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { href: '/services', label: 'Leistungen' },
+  { href: '/tech-sales', label: 'Tech Sales' },
   { href: '/projects', label: 'Projekte' },
   { href: '/about', label: 'Über mich' },
 ];
