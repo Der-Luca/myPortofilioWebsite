@@ -1,12 +1,12 @@
 export const metadata = {
   title: "Über Luca-Samuel Pleßing | Plessing Consulting",
-  description: "Luca-Samuel Pleßing verbindet Prozessverständnis, CRM-Optimierung, Systemintegration und Software Engineering für Unternehmen im DACH-Raum.",
+  description: "Luca-Samuel Pleßing verbindet IT-Beratung, technisches Verständnis und B2B Tech Sales für Software-, IT- und Digitalunternehmen im DACH-Raum.",
   alternates: {
     canonical: "https://plessing-consulting.com/about",
   },
   openGraph: {
     title: "Über Luca-Samuel Pleßing | Plessing Consulting",
-    description: "IT-Beratung und technische Umsetzung mit Fokus auf CRM, Automatisierung und bestehende Systemlandschaften.",
+    description: "IT-Beratung, technische Umsetzung und B2B Tech Sales mit Fokus auf verständliche Lösungen und pragmatische Zusammenarbeit.",
     type: "website",
     locale: "de_DE",
     siteName: "Plessing Consulting",

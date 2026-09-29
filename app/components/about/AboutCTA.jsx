@@ -37,13 +37,13 @@ export default function AboutCTA() {
 
           {/* 3. Headline & Text */}
           <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            Welcher Ablauf kostet Ihr Team <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">heute unnötig Zeit?</span>
+            Wo braucht Ihr Unternehmen <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">pragmatische Unterstützung?</span>
           </h2>
           
           <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed">
-            Kein Tool-Pitch: Wir betrachten einen konkreten Prozess, suchen den eigentlichen
-            Engpass und prüfen, welcher nächste Schritt wirtschaftlich sinnvoll ist.
+            Ob Prozess, technische Umsetzung oder B2B-Outbound: Wir klären die Ausgangslage
+            und prüfen, welcher nächste Schritt für Ihr Unternehmen sinnvoll ist.
           </p>
 
           {/* 4. Action Buttons */}
@@ -55,7 +55,7 @@ export default function AboutCTA() {
               className="relative w-full sm:w-auto group inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:bg-blue-500 hover:scale-[1.02] shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40"
             >
               <Calendar className="w-5 h-5" />
-              <span>Ablauf besprechen</span>
+              <span>Unverbindlich kennenlernen</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
 

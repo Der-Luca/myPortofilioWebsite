@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { fadeUp } from './animations';
 
 const facts = [
-  { k: 'Fokus', v: 'CRM, Automatisierung, Systemintegration' },
+  { k: 'Fokus', v: 'IT-Beratung, B2B Tech Sales, Automatisierung' },
   { k: 'Stack', v: 'Next.js, Node/Express, Postgres, n8n, Docker' },
   { k: 'Modus', v: 'Freelance / Projekt-basiert' },
   { k: 'Sprachen', v: 'DE / EN / ES (Basics)' },

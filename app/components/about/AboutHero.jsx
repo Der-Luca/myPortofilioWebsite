@@ -30,11 +30,11 @@ const imageVariants = {
 
 export default function AboutHero() {
   const chips = [
+    'IT-Beratung',
+    'B2B Tech Sales',
+    'Technisches Verständnis',
     'Klare Kommunikation',
-    'Strukturierte Beratung',
-    'Bestehende Systeme verstehen',
-    'Pragmatische Lösungen',
-    'Verlässliche Zusammenarbeit',
+    'Pragmatische Umsetzung',
   ];
 
   return (
@@ -67,9 +67,9 @@ export default function AboutHero() {
             variants={itemVariants} 
             className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-white"
           >
-            Technik verstehen. <br />
+            Technik verstehen. Beraten. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">
-              Prozesse besser machen.
+              Kunden erreichen.
             </span>
           </motion.h1>
 
@@ -77,9 +77,10 @@ export default function AboutHero() {
             variants={itemVariants} 
             className="text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0"
           >
-            Ich bin Luca-Samuel Pleßing, selbstständiger IT-Berater und Software Engineer.
-            Ich verbinde Prozessverständnis mit technischer Umsetzung – damit nicht einfach
-            neue Software entsteht, sondern eine Lösung, die im Arbeitsalltag wirklich hilft.
+            Ich bin Luca-Samuel Pleßing, selbstständiger IT-Berater mit Hintergrund in
+            Softwareentwicklung und B2B Tech Sales. Ich verbinde technisches Verständnis,
+            strukturierte Beratung und direkte Kommunikation – von besseren digitalen
+            Abläufen bis zur Ansprache neuer Geschäftskunden.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-2">
@@ -98,11 +99,11 @@ export default function AboutHero() {
               href="/contact"
               className="w-full sm:w-auto text-center rounded-xl bg-blue-600 px-8 py-4 text-base font-bold text-white transition-all hover:bg-blue-500 hover:scale-[1.02] shadow-lg shadow-blue-500/25"
             >
-              Einen Ablauf besprechen
+              Unverbindlich kennenlernen
             </a>
             <div className="text-sm text-gray-500 flex items-center gap-2">
               <span className="hidden sm:inline-block h-px w-8 bg-gray-800"></span>
-              <span>Beratung · Umsetzung · Begleitung</span>
+              <span>IT-Beratung · Tech Sales · Umsetzung</span>
             </div>
           </motion.div>
         </motion.div>
@@ -139,7 +140,7 @@ export default function AboutHero() {
               className="absolute -right-4 top-10 flex items-center gap-2 rounded-xl border border-white/10 bg-gray-900/80 p-3 backdrop-blur-md shadow-xl"
             >
               <div className="h-3 w-3 rounded-full bg-emerald-500" />
-              <span className="text-xs font-bold text-white">Klare Kommunikation</span>
+              <span className="text-xs font-bold text-white">Technik & Vertrieb</span>
             </motion.div>
 
             <motion.div 

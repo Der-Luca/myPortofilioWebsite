@@ -4,6 +4,29 @@ import { motion } from 'framer-motion';
 // ansonsten importiere es einfach wieder wie gewohnt.
 import { fadeUp } from './animations'; 
 
+const businessSkillGroups = [
+  {
+    title: 'B2B Tech Sales & Outbound',
+    text: 'Technisch fundierte Ansprache für erklärungsbedürftige Produkte und Dienstleistungen – professionell, direkt und ohne generischen Callcenter-Ansatz.',
+    items: [
+      'Deutsches B2B Cold Calling', 'Lead-Qualifizierung', 'Appointment Setting',
+      'Entscheideransprache', 'Follow-ups', 'CRM-Dokumentation',
+      'Gesprächsleitfäden', 'Zielgruppen & Messaging',
+    ],
+    color: 'from-blue-400 to-cyan-300',
+  },
+  {
+    title: 'Beratung & Kundenverständnis',
+    text: 'Komplexe Anforderungen verstehen, verständlich strukturieren und gemeinsam mit technischen wie kaufmännischen Ansprechpartnern in sinnvolle nächste Schritte übersetzen.',
+    items: [
+      'Bedarfsanalyse', 'Discovery-Gespräche', 'Stakeholder-Kommunikation',
+      'Prozessanalyse', 'Technische Übersetzung', 'Lösungsstrukturierung',
+      'Workshop-Moderation', 'Verlässliche Dokumentation',
+    ],
+    color: 'from-emerald-400 to-teal-300',
+  },
+];
+
 const skillGroups = [
   {
     title: 'Frontend Engineering',
@@ -100,8 +123,41 @@ export default function SkillsGrid() {
             Skills <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">& Tools</span>
           </h3>
           <p className="text-gray-400 max-w-2xl text-lg">
-            Ein umfassender Überblick über meinen technischen Stack und die Technologien, die ich täglich einsetze.
+            Beratung, Vertrieb und technische Umsetzung greifen bei mir ineinander. So kann ich komplexe Angebote verstehen, klar vermitteln und bei Bedarf auch selbst umsetzen.
           </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+          {businessSkillGroups.map((group) => (
+            <motion.article
+              key={group.title}
+              variants={itemVariants}
+              className="group relative overflow-hidden rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-500/10 to-gray-900/40 p-7 md:p-9 backdrop-blur-xl transition-all duration-300 hover:border-blue-400/35 hover:shadow-2xl hover:shadow-blue-900/20"
+            >
+              <div className={`absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${group.color} opacity-10 blur-3xl transition-opacity duration-500 group-hover:opacity-20`} />
+              <div className="relative z-10">
+                <h4 className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${group.color}`}>
+                  {group.title}
+                </h4>
+                <p className="mt-4 max-w-xl leading-7 text-gray-400">{group.text}</p>
+                <ul className="mt-7 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="cursor-default rounded-md border border-white/10 bg-white/[.06] px-3 py-1.5 text-xs font-medium font-mono text-gray-200 transition-colors duration-200 hover:border-white/20 hover:bg-white/10 hover:text-white"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        <motion.div variants={itemVariants} className="mb-8">
+          <h4 className="text-2xl md:text-3xl font-bold text-white">Technische Skills & Tools</h4>
+          <p className="mt-3 max-w-2xl text-gray-400">Der technische Stack hinter meiner Beratung und Umsetzung.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

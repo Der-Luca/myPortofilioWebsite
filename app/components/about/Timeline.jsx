@@ -6,17 +6,20 @@ import { fadeUp } from './animations';
 export const timeline = [
   {
     period: '02/2022 – heute',
-    title: 'Freelance Software Engineer & IT Consultant',
+    title: 'Freelance IT Consultant, Software Engineer & Tech Sales',
     company: 'Selbstständig',
     type: 'work', // work | education
-    desc: `Entwicklung skalierbarer Web- und Backend-Systeme mit Fokus auf Automatisierung, Systemarchitektur und KI-gestützte Lösungen. Verantwortung von der technischen Konzeption über API-Design und Datenbankmodellierung bis Deployment, Betrieb und Dokumentation.`,
+    desc: [
+      `Beratung und technische Umsetzung für Software-, Automatisierungs- und Digitalprojekte – von der Analyse bestehender Prozesse über Systemarchitektur und Schnittstellen bis zu Deployment, Betrieb und Dokumentation.`,
+      `Zusätzlich Unterstützung im B2B Tech Sales: technische Angebote verständlich vermitteln, Zielkunden ansprechen, Bedarf qualifizieren und nächste Schritte strukturiert im CRM dokumentieren.`,
+    ],
   },
   {
     period: '10/2022 – 09/2025',
     title: 'B.Sc. Wirtschaftsinformatik (dual)',
     company: 'cbs Corporate Business Solutions / C.U. Mannheim',
     type: 'education',
-    desc: `Schwerpunkte: Softwareentwicklung, IT-Architektur, Prozesse und Consulting. Bachelorarbeit: KI im First-Level-Support (RAG, Automatisierung, KPIs).`,
+    desc: `Schwerpunkte: Softwareentwicklung, IT-Architektur, Geschäftsprozesse, Consulting und die Verbindung von technischen und wirtschaftlichen Anforderungen. Bachelorarbeit: KI im First-Level-Support (RAG, Automatisierung, KPIs).`,
   },
   {
     period: '08/2021 – 08/2022',
