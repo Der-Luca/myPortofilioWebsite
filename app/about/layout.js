@@ -15,5 +15,37 @@ export const metadata = {
 };
 
 export default function AboutLayout({ children }) {
-  return children;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "@id": "https://plessing-consulting.com/about/#profile",
+            url: "https://plessing-consulting.com/about/",
+            name: "Über Luca-Samuel Pleßing",
+            dateModified: "2026-09-29",
+            mainEntity: {
+              "@id": "https://plessing-consulting.com/#person",
+              "@type": "Person",
+              name: "Luca-Samuel Pleßing",
+              jobTitle: "IT-Berater und Freelance B2B Tech Sales Support",
+              worksFor: { "@id": "https://plessing-consulting.com/#business" },
+              knowsAbout: [
+                "IT-Beratung",
+                "B2B Tech Sales",
+                "Softwareentwicklung",
+                "Prozessoptimierung",
+                "Systemintegration",
+                "Automatisierung",
+              ],
+            },
+          }),
+        }}
+      />
+      {children}
+    </>
+  );
 }

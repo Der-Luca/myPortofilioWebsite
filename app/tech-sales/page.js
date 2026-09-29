@@ -15,6 +15,9 @@ import {
 } from "lucide-react";
 import Navbar from "../components/navbar";
 import Footer from "../components/home/Footer";
+import JsonLd from "../components/seo/JsonLd";
+
+const baseUrl = "https://plessing-consulting.com";
 
 export const metadata = {
   title: "Freelance B2B Tech Sales für Software & SaaS",
@@ -111,6 +114,38 @@ const audiences = [
 export default function TechSalesPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Service",
+            "@id": `${baseUrl}/tech-sales/#service`,
+            name: "B2B Tech Sales für Software- und IT-Unternehmen",
+            serviceType: [
+              "Freelance B2B Tech Sales",
+              "Deutsches B2B Cold Calling",
+              "Lead-Qualifizierung",
+              "Appointment Setting",
+              "Outbound Sales Support",
+            ],
+            description: "Technisch versierter Freelance Sales Support für Software-, SaaS- und IT-Unternehmen im deutschsprachigen B2B-Outbound.",
+            provider: { "@id": `${baseUrl}/#business` },
+            areaServed: ["Deutschland", "Österreich", "Schweiz"],
+            audience: {
+              "@type": "BusinessAudience",
+              audienceType: "Softwareunternehmen, SaaS-Unternehmen, IT-Dienstleister, Digitalagenturen und Automatisierungsanbieter",
+            },
+            url: `${baseUrl}/tech-sales/`,
+          },
+          {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Startseite", item: `${baseUrl}/` },
+              { "@type": "ListItem", position: 2, name: "B2B Tech Sales", item: `${baseUrl}/tech-sales/` },
+            ],
+          },
+        ],
+      }} />
       <Navbar />
 
       <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden border-b border-white/10 px-6 pb-20 pt-28">
